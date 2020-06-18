@@ -1,7 +1,7 @@
 let wins = 0;
 let losses = 0;
 let tries = 3;
-let play = true;
+let play = false
 
 let animals = ["dog", "cat", "chicken", "horse"];
 let fruit = ["banana", "apple", "strawberry", "orange"];
@@ -22,4 +22,6 @@ while (play) {
     }
 
     console.log("Would you like to play again? [Yes/No]")
+
+
 }

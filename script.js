@@ -39,18 +39,23 @@ app.get('/', function (req, res) {
     res.render('front', context);
 });
 
-
-
-/* This GET request handles loading the front page. */
-app.get('/contact', function (req, res) {
+/* This GET request handles loading the category-cross-out game. */
+app.get('/category_cross_out', function (req, res) {
     let context = {};
-    res.render('front', context);
+    res.render('category_cross_out', context);
 });
 
-/* This GET request handles loading the front page. */
+
+/* This GET request handles loading the contact page. */
+app.get('/contact', function (req, res) {
+    let context = {};
+    res.render('contact', context);
+});
+
+/* This GET request handles loading the help page. */
 app.get('/help', function (req, res) {
     let context = {};
-    res.render('front', context);
+    res.render('help', context);
 });
 
 /* Create a 500 page. */
