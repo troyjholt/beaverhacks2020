@@ -9,7 +9,7 @@ const path = require('path');
 app.use(express.static(path.join(__dirname, '/public')));
 
 /* Start express-handlebars. Set the main layout. */
-let handlebars = require('express-handlebars').create({defaultLayout: 'index'});
+let handlebars = require('express-handlebars').create({defaultLayout: 'main'});
 
 /* Set express-handlebars as the template engine.*/
 

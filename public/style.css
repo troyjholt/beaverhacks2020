@@ -2,17 +2,15 @@
     box-sizing: border-box;
 }
 
-
+/* Default page settings.*/
 html, body {
-
-    display:flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
     height: 100%;
     width: 100%;
     margin: 0;
     padding: 0;
-
     background-color: #FFFFFF;
     color: #000000;
 
@@ -20,54 +18,149 @@ html, body {
     font-weight: 400;
 }
 
-div.nav_container{
-    top:0;
+/* Container for the elements in the navigation bar. Stretches bar across the page and provides background.*/
+div.nav_container {
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+    padding: 0px;
+    margin: 0px;
 
-    display:flex;
+    background-color: #1A237E;
+    color: #E3F2FD;
+
+    /* Sets MD drop-down shadow.*/
+    box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
+}
+
+/* Container for the two blocks of content in the nav. bar: title/logo & menu buttons.
+   Centers the content and provides margins.*/
+div.nav_content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+    width: 80%;
+}
+
+
+/* Formatting for the title element. */
+div.title {
+    width: 50%;
+    height: 100%;
+    padding: 10px;
+}
+
+div.title span {
+    font-weight: 600;
+    font-size: 2em;
+}
+
+
+/* Formatting for the nav. bar's menu. */
+div.menu_buttons {
+    height: 100%;
+    width: 50%;
+}
+
+div.menu_buttons > ul {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+div.menu_buttons > ul > li {
+    height: 100%;
+    list-style: none;
+    flex-shrink: 0;
+    flex-grow: 1;
+}
+
+
+div.menu_buttons > ul > li > a {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #BBDEFB;
+}
+
+div.menu_buttons > ul > li > a:hover {
+    background: #E3F2FD;
+    color: #1A237E;
+    font-weight: bold;
+}
+
+div.spacer{
+    width: 100%;
+    height: 20px;
+}
+
+div.body_content_box {
+    display: flex;
+    width: 80%;
+}
+
+div.card_container{
+    display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
 
     width: 100%;
-    height: fit-content;
-
-    background-color: #1A237E;
-    color: #E3F2FD;
-
-    font-family: "Nunito", sans-serif;
-    padding: 0px;
-    margin: 0px;
-}
-
-div.nav_buttons{
-    display:flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
     height: 100%;
-    width: 50%;
+
+    border-color: blue;
+    border-style: solid;
 }
 
-div.nav_buttons span{
-    display:flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    height: 100%;
+
+
+
+.card:hover{
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
 }
 
-div.title{
-    padding: 10px;
-}
-
-div.title span{
+.card h3{
     font-weight: 600;
-    font-size: 2em;
 }
 
-div.body_content_box{
-    display: flex;
-    flex-direction: column;
-    width: 80%;
+.card img{
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    max-height: 120px;
+}
 
+.card-1{
+    background-image: url(https://ionicframework.com/img/getting-started/ionic-native-card.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 80px;
+}
+
+.card-2{
+    background-image: url(https://ionicframework.com/img/getting-started/components-card.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 80px;
+}
+
+.card-3{
+    background-image: url(https://ionicframework.com/img/getting-started/theming-card.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 80px;
 }
