@@ -11,11 +11,14 @@ app.use(express.static(path.join(__dirname, '/public')));
 /* Start express-handlebars. Set the main layout. */
 let handlebars = require('express-handlebars').create({defaultLayout: 'main'});
 
-/* Set express-handlebars as the template engine.*/
+/* Set express-handlebars as the template engine. At runtime, the template
+ * engine will replace variables in the template file with values and transform
+ * the template into a web-page for the client.*/
 
 app.engine('handlebars', handlebars.engine);  // Connect express-handlebars to express.
 app.set('view engine', 'handlebars'); // Set express-handlebars to manage the views.
 app.set('port', process.argv[2]); // Set input from the console to manage the port.
+
 
 /* Set up the HTTP request.*/
 let request = require('request');
@@ -29,11 +32,23 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 
-/* THIS SETUP DOES NOT INCLUDE SESSIONS SETUP OR MYSQL SETUP */
-
 
 /* This GET request handles loading the front page. */
 app.get('/', function (req, res) {
+    let context = {};
+    res.render('front', context);
+});
+
+
+
+/* This GET request handles loading the front page. */
+app.get('/contact', function (req, res) {
+    let context = {};
+    res.render('front', context);
+});
+
+/* This GET request handles loading the front page. */
+app.get('/help', function (req, res) {
     let context = {};
     res.render('front', context);
 });
@@ -51,3 +66,16 @@ app.use(function (req, res) {
     res.status(404);
     res.render('404');
 });
+
+
+/* Listen for someone to access the script on the specified port. */
+app.listen(app.get('port'), function () {
+    console.log('Express started on http://flip3.oregonstate.edu:' + app.get('port') + '; press Ctrl-C to terminate.');
+});
+
+
+
+
+
+
+

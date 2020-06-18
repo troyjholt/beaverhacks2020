@@ -94,6 +94,7 @@ div.menu_buttons > ul > li > a {
     align-items: center;
     text-decoration: none;
     color: #BBDEFB;
+    font-weight: bold;
 }
 
 div.menu_buttons > ul > li > a:hover {
