@@ -76,6 +76,26 @@ app.get('/category_cross_out', function (req, res) {
 
 });
 
+/* This GET request handles loading the shape-match page. */
+app.get('/shape_match', function (req, res) {
+    let context = {};
+    res.render('shape_match', context);
+});
+
+
+/* This GET request handles loading the guess-the-word page. */
+app.get('/guess_the_word', function (req, res) {
+    let context = {};
+    res.render('guess_the_word', context);
+});
+
+
+/* This GET request handles loading the contact page. */
+app.get('/contact', function (req, res) {
+    let context = {};
+    res.render('contact', context);
+});
+
 
 /* This GET request handles loading the contact page. */
 app.get('/contact', function (req, res) {
