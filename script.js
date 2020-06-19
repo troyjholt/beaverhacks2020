@@ -1,4 +1,4 @@
-/* Include and start express. */
+// /* Include and start express. */
 let express = require('express');
 let app = express();
 
@@ -7,7 +7,7 @@ const path = require('path');
 
 /* Set the path for loading assets like CSS and images.*/
 app.use(express.static(path.join(__dirname, '/public')));
-
+//
 /* Start express-handlebars. Set the main layout. */
 let handlebars = require('express-handlebars').create({defaultLayout: 'main'});
 
@@ -105,8 +105,9 @@ app.use(function (req, res) {
 
 
 /* Listen for someone to access the script on the specified port. */
-app.listen(app.get('port'), function () {
-    console.log('Express started on http://flip3.oregonstate.edu:' + app.get('port') + '; press Ctrl-C to terminate.');
+let port = process.env.PORT || 3000
+app.listen(port, function () {
+    console.log('Express started on https://gentle-shore-56851.herokuapp.com/  (server-side port ' + port + '); press Ctrl-C to terminate.');
 });
 
 
