@@ -1,4 +1,13 @@
-// /* Include and start express. */
+/* Setup the connection to PostgreSQL */
+const { Pool } = require('pg')
+const pool = new Pool({
+    connectionString: process.env.DATABASE_URL || "localhost",
+    max: 20,
+    idleTimeoutMillis: 30000,
+    connectionTimeoutMillis: 2000,
+});
+
+/* Include and start express. */
 let express = require('express');
 let app = express();
 
@@ -50,25 +59,19 @@ app.get('/category_cross_out', function (req, res) {
     /* Score tracker.*/
     let scoreStatus = {rounds: 1, wins: 0, tries: 3};
 
-    let itemArrays=[
-        ["dog", "cat", "chicken", "horse"],
-        ["banana", "apple", "strawberry", "orange"],
-        ["fall", "winter", "spring", "summer"],
-        ["pants", "shirt", "belt", "socks"],
-        ["happy", "sad", "angry", "nervous"],
-        ["Alaska", "Florida", "Washington", "Oregon"]
-    ];
+    pool.connect((err, client, release) => {
+        if (err) {
+            return console.error('Error acquiring client.', err.stack)
+        }
+        client.query('SELECT * FROM (SELECT ROW_NUMBER() OVER (ORDER BY category_id ASC) AS rownumber, name FROM category) AS selection WHERE rownumber=?;', ['2'], (err, result) => {
+            release()
+            if (err) {
+                return console.error('Error executing query', err.stack)
+            }
+            console.log(result)
+        })
+    })
 
-    let categoryNames=["animals", "fruit", "seasons", "clothing", "emotions", "states"];
-
-    /* Selects two lists at random that use one element from one list and three from the other.*/
-    /* Tracks the unique element.*/
-
-    let category_number=rand(categoryNames.length);
-    let wrong_category_number=rand(categoryNames.length);
-    let wrong_category_item=rand(itemArrays[0].length);
-    let newList=itemArrays[category_number]
-    newList[wrong_category_item]=itemArrays[wrong_category_number][wrong_category_item];
 
     context.list;
     context.wrongItem=wrong_category_item;

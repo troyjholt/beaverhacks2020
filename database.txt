@@ -1,0 +1,41 @@
+CREATE TABLE words(
+                     word_id SERIAL PRIMARY KEY UNIQUE NOT NULL,
+                     name VARCHAR(255) NOT NULL,
+                     type VARCHAR(255) NOT NULL,
+                     URL VARCHAR(255),
+                     difficulty VARCHAR(255) NOT NULL
+);
+
+INSERT INTO words (name, type, URL, difficulty) VALUES ('dog', 'animal', 'dog.jpg', 'easy');
+INSERT INTO words (name, type, URL, difficulty) VALUES ('cat', 'animal', 'cat.jpg', 'easy');
+INSERT INTO words (name, type, URL, difficulty) VALUES ('chicken', 'animal', 'chicken.jpg', 'easy');
+INSERT INTO words (name, type, URL, difficulty) VALUES ('horse', 'animal', 'horse.jpg', 'easy');
+
+
+INSERT INTO words (name, type, URL, difficulty) VALUES ('banana', 'fruit', 'banana.jpg', 'easy');
+INSERT INTO words (name, type, URL, difficulty) VALUES ('apple', 'fruit', 'apple.jpg', 'easy');
+INSERT INTO words (name, type, URL, difficulty) VALUES ('strawberry', 'fruit', 'strawberry.jpg', 'easy');
+INSERT INTO words (name, type, URL, difficulty) VALUES ('orange', 'fruit', 'orange.jpg', 'easy');
+
+
+
+INSERT INTO words (name, type, URL, difficulty) VALUES ('pants', 'clothing', 'pants.jpg', 'easy');
+INSERT INTO words (name, type, URL, difficulty) VALUES ('shirt', 'clothing', 'shirt.jpg', 'easy');
+INSERT INTO words (name, type, URL, difficulty) VALUES ('shoes', 'clothing', 'shoes.jpg', 'easy');
+INSERT INTO words (name, type, URL, difficulty) VALUES ('belt', 'clothing', 'belt.jpg', 'easy');
+
+
+INSERT INTO words (name, type, URL, difficulty) VALUES ('winter', 'season', 'winter.jpg', 'medium');
+INSERT INTO words (name, type, URL, difficulty) VALUES ('fall', 'season', 'fall.jpg', 'medium');
+INSERT INTO words (name, type, URL, difficulty) VALUES ('spring', 'season', 'spring.jpg', 'medium');
+INSERT INTO words (name, type, URL, difficulty) VALUES ('summer', 'season', 'summer.jpg', 'medium');
+
+INSERT INTO words (name, type, URL, difficulty) VALUES ('Alaska', 'state', 'alaska.jpg', 'medium');
+INSERT INTO words (name, type, URL, difficulty) VALUES ('Florida', 'state', 'florida.jpg', 'medium');
+INSERT INTO words (name, type, URL, difficulty) VALUES ('Washington', 'state', 'washington.jpg', 'medium');
+INSERT INTO words (name, type, URL, difficulty) VALUES ('Oregon', 'state', 'oregon.jpg', 'medium');
+
+INSERT INTO words (name, type, URL, difficulty) VALUES ('happy', 'emotion', 'happy.jpg', 'hard');
+INSERT INTO words (name, type, URL, difficulty) VALUES ('sad', 'emotion', 'sad.jpg', 'hard');
+INSERT INTO words (name, type, URL, difficulty) VALUES ('angry', 'emotion', 'angry.jpg', 'hard');
+INSERT INTO words (name, type, URL, difficulty) VALUES ('nervous', 'emotion', 'nervous.jpg', 'hard');
