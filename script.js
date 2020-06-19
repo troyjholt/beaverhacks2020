@@ -66,8 +66,8 @@ app.get('/category_cross_out', function (req, res) {
                 return console.error('Error executing query', err.stack)
             }
 
-            context.x=JSON.stringify(result);
-            console.log(result);
+            context.x=JSON.stringify(result.rows[0]);
+            console.log(result.rows[0]);
             console.log(context.x);
             res.render('category_cross_out', context);
         })
