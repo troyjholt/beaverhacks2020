@@ -58,7 +58,9 @@ app.get('/category_cross_out', function (req, res) {
         if (err) {
             return console.error('Error acquiring client.', err.stack)
         }
-        client.query('SELECT * FROM (SELECT ROW_NUMBER() OVER (ORDER BY category_id ASC) AS rownumber, name FROM category) AS selection WHERE rownumber=?;', ['2'], (err, result) => {
+
+
+        client.query('SELECT * FROM category', (err, result) => {
             release()
             if (err) {
                 return console.error('Error executing query', err.stack)

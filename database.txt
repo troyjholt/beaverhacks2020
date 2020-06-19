@@ -1,41 +1,80 @@
 CREATE TABLE words(
                      word_id SERIAL PRIMARY KEY UNIQUE NOT NULL,
                      name VARCHAR(255) NOT NULL,
-                     type VARCHAR(255) NOT NULL,
+                     type INT NOT NULL,
                      URL VARCHAR(255),
                      difficulty VARCHAR(255) NOT NULL
+		     FOREIGN KEY (type) REFERENCES category(category_id) ON DELETE CASCADE
 );
 
-INSERT INTO words (name, type, URL, difficulty) VALUES ('dog', 'animal', 'dog.jpg', 'easy');
-INSERT INTO words (name, type, URL, difficulty) VALUES ('cat', 'animal', 'cat.jpg', 'easy');
-INSERT INTO words (name, type, URL, difficulty) VALUES ('chicken', 'animal', 'chicken.jpg', 'easy');
-INSERT INTO words (name, type, URL, difficulty) VALUES ('horse', 'animal', 'horse.jpg', 'easy');
+CREATE TABLE category(
+                     category_id SERIAL PRIMARY KEY UNIQUE NOT NULL,
+                     name VARCHAR(255) NOT NULL,
+);
+
+INSERT INTO category (name) VALUES ('animal');
+INSERT INTO category (name) VALUES ('fruit');
+INSERT INTO category (name) VALUES ('clothing');
+INSERT INTO category (name) VALUES ('season');
+INSERT INTO category (name) VALUES ('state');
+INSERT INTO category (name) VALUES ('emotion');
+
+INSERT INTO words (name, type, URL, difficulty) VALUES ('dog', (SELECT category_id FROM category WHERE category.name='animal'), 'dog.jpg', 'easy');
+INSERT INTO words (name, type, URL, difficulty) VALUES ('cat', (SELECT category_id FROM category WHERE category.name='animal'), 'cat.jpg', 'easy');
+INSERT INTO words (name, type, URL, difficulty) VALUES ('chicken', (SELECT category_id FROM category WHERE category.name='animal'), 'chicken.jpg', 'easy');
+INSERT INTO words (name, type, URL, difficulty) VALUES ('horse', (SELECT category_id FROM category WHERE category.name='animal'), 'horse.jpg', 'easy');
 
 
-INSERT INTO words (name, type, URL, difficulty) VALUES ('banana', 'fruit', 'banana.jpg', 'easy');
-INSERT INTO words (name, type, URL, difficulty) VALUES ('apple', 'fruit', 'apple.jpg', 'easy');
-INSERT INTO words (name, type, URL, difficulty) VALUES ('strawberry', 'fruit', 'strawberry.jpg', 'easy');
-INSERT INTO words (name, type, URL, difficulty) VALUES ('orange', 'fruit', 'orange.jpg', 'easy');
 
 
 
-INSERT INTO words (name, type, URL, difficulty) VALUES ('pants', 'clothing', 'pants.jpg', 'easy');
-INSERT INTO words (name, type, URL, difficulty) VALUES ('shirt', 'clothing', 'shirt.jpg', 'easy');
-INSERT INTO words (name, type, URL, difficulty) VALUES ('shoes', 'clothing', 'shoes.jpg', 'easy');
-INSERT INTO words (name, type, URL, difficulty) VALUES ('belt', 'clothing', 'belt.jpg', 'easy');
+INSERT INTO words (name, type, URL, difficulty) VALUES ('banana', (SELECT category_id FROM category WHERE category.name='fruit'), 'banana.jpg', 'easy');
+INSERT INTO words (name, type, URL, difficulty) VALUES ('apple', (SELECT category_id FROM category WHERE category.name='fruit'), 'apple.jpg', 'easy');
+INSERT INTO words (name, type, URL, difficulty) VALUES ('strawberry', (SELECT category_id FROM category WHERE category.name='fruit'), 'strawberry.jpg', 'easy');
+INSERT INTO words (name, type, URL, difficulty) VALUES ('orange', (SELECT category_id FROM category WHERE category.name='fruit'), 'orange.jpg', 'easy');
 
 
-INSERT INTO words (name, type, URL, difficulty) VALUES ('winter', 'season', 'winter.jpg', 'medium');
-INSERT INTO words (name, type, URL, difficulty) VALUES ('fall', 'season', 'fall.jpg', 'medium');
-INSERT INTO words (name, type, URL, difficulty) VALUES ('spring', 'season', 'spring.jpg', 'medium');
-INSERT INTO words (name, type, URL, difficulty) VALUES ('summer', 'season', 'summer.jpg', 'medium');
 
-INSERT INTO words (name, type, URL, difficulty) VALUES ('Alaska', 'state', 'alaska.jpg', 'medium');
-INSERT INTO words (name, type, URL, difficulty) VALUES ('Florida', 'state', 'florida.jpg', 'medium');
-INSERT INTO words (name, type, URL, difficulty) VALUES ('Washington', 'state', 'washington.jpg', 'medium');
-INSERT INTO words (name, type, URL, difficulty) VALUES ('Oregon', 'state', 'oregon.jpg', 'medium');
 
-INSERT INTO words (name, type, URL, difficulty) VALUES ('happy', 'emotion', 'happy.jpg', 'hard');
-INSERT INTO words (name, type, URL, difficulty) VALUES ('sad', 'emotion', 'sad.jpg', 'hard');
-INSERT INTO words (name, type, URL, difficulty) VALUES ('angry', 'emotion', 'angry.jpg', 'hard');
-INSERT INTO words (name, type, URL, difficulty) VALUES ('nervous', 'emotion', 'nervous.jpg', 'hard');
+
+INSERT INTO words (name, type, URL, difficulty) VALUES ('pants', (SELECT category_id FROM category WHERE category.name='clothing'), 'pants.jpg', 'easy');
+INSERT INTO words (name, type, URL, difficulty) VALUES ('shirt', (SELECT category_id FROM category WHERE category.name='clothing'), 'shirt.jpg', 'easy');
+INSERT INTO words (name, type, URL, difficulty) VALUES ('shoes', (SELECT category_id FROM category WHERE category.name='clothing'), 'shoes.jpg', 'easy');
+INSERT INTO words (name, type, URL, difficulty) VALUES ('belt', (SELECT category_id FROM category WHERE category.name='clothing'), 'belt.jpg', 'easy');
+
+
+
+
+INSERT INTO words (name, type, URL, difficulty) VALUES ('winter', (SELECT category_id FROM category WHERE category.name='season'), 'winter.jpg', 'medium');
+INSERT INTO words (name, type, URL, difficulty) VALUES ('fall', (SELECT category_id FROM category WHERE category.name='season'), 'fall.jpg', 'medium');
+INSERT INTO words (name, type, URL, difficulty) VALUES ('spring', (SELECT category_id FROM category WHERE category.name='season'), 'spring.jpg', 'medium');
+INSERT INTO words (name, type, URL, difficulty) VALUES ('summer', (SELECT category_id FROM category WHERE category.name='season'), 'summer.jpg', 'medium');
+
+
+
+INSERT INTO words (name, type, URL, difficulty) VALUES ('Alaska', 
+(SELECT category_id FROM category WHERE category.name='state'), 'alaska.jpg', 'medium');
+INSERT INTO words (name, type, URL, difficulty) VALUES ('Florida', 
+(SELECT category_id FROM category WHERE category.name='state'), 'florida.jpg', 'medium');
+INSERT INTO words (name, type, URL, difficulty) VALUES ('Washington', 
+(SELECT category_id FROM category WHERE category.name='state'), 'washington.jpg', 'medium');
+INSERT INTO words (name, type, URL, difficulty) VALUES ('Oregon', 
+(SELECT category_id FROM category WHERE category.name='state'), 'oregon.jpg', 'medium');
+
+
+
+
+
+INSERT INTO words (name, type, URL, difficulty) VALUES ('happy', (SELECT category_id FROM category WHERE category.name='emotion'), 'happy.jpg', 'hard');
+INSERT INTO words (name, type, URL, difficulty) VALUES ('sad', (SELECT category_id FROM category WHERE category.name='emotion'), 'sad.jpg', 'hard');
+INSERT INTO words (name, type, URL, difficulty) VALUES ('angry', (SELECT category_id FROM category WHERE category.name='emotion'), 'angry.jpg', 'hard');
+INSERT INTO words (name, type, URL, difficulty) VALUES ('nervous', (SELECT category_id FROM category WHERE category.name='emotion'), 'nervous.jpg', 'hard');
+
+
+
+
+
+SELECT * FROM (SELECT ROW_NUMBER() OVER (ORDER BY category_id ASC) AS rownumber, name FROM category) AS selection WHERE rownumber=?;
+
+
+
