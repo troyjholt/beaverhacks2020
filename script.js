@@ -52,12 +52,7 @@ app.get('/', function (req, res) {
 /* This GET request handles loading the category-cross-out game. */
 app.get('/category_cross_out', function (req, res) {
 
-    /* Create the random number generator.*/
-    var rand = require('random-seed').create();
     let context = {};
-
-    /* Score tracker.*/
-    let scoreStatus = {rounds: 1, wins: 0, tries: 3};
 
     pool.connect((err, client, release) => {
         if (err) {
@@ -70,11 +65,7 @@ app.get('/category_cross_out', function (req, res) {
             }
             console.log(result)
         })
-    })
-
-
-    context.list;
-    context.wrongItem=wrong_category_item;
+    });
 
     res.render('category_cross_out', context);
 });
