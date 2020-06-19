@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "UNTITLED",
   "main": "script.js",
-  "scripts": {},
+  "scripts": {"start": "node script.js"},
   "author": "spacejam.com",
   "license": "ISC",
   "dependencies": {
@@ -13,6 +13,7 @@
     "express-session": "^1.17.1",
     "mysql": "^2.18.1",
     "path": "^0.12.7",
+    "random-seed": "^0.3.0",
     "request": "^2.88.2"
   }
 }

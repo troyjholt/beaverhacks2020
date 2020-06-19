@@ -19,7 +19,6 @@ app.engine('handlebars', handlebars.engine);  // Connect express-handlebars to e
 app.set('view engine', 'handlebars'); // Set express-handlebars to manage the views.
 app.set('port', process.argv[2]); // Set input from the console to manage the port.
 
-
 /* Set up the HTTP request.*/
 let request = require('request');
 
@@ -31,6 +30,8 @@ let bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
+/* This code sets up a random number generator. */
+var rand = require('random-seed').create();
 
 
 /* This GET request handles loading the front page. */
@@ -41,7 +42,37 @@ app.get('/', function (req, res) {
 
 /* This GET request handles loading the category-cross-out game. */
 app.get('/category_cross_out', function (req, res) {
+
+    /* Create the random number generator.*/
+    var rand = require('random-seed').create();
     let context = {};
+
+    /* Score tracker.*/
+    let scoreStatus = {rounds: 1, wins: 0, tries: 3};
+
+    let itemArrays=[
+        ["dog", "cat", "chicken", "horse"],
+        ["banana", "apple", "strawberry", "orange"],
+        ["fall", "winter", "spring", "summer"],
+        ["pants", "shirt", "belt", "socks"],
+        ["happy", "sad", "angry", "nervous"],
+        ["Alaska", "Florida", "Washington", "Oregon"]
+    ];
+
+    let categoryNames=["animals", "fruit", "seasons", "clothing", "emotions", "states"];
+
+    /* Selects two lists at random that use one element from one list and three from the other.*/
+    /* Tracks the unique element.*/
+
+    let category_number=rand(categoryNames.length);
+    let wrong_category_number=rand(categoryNames.length);
+    let wrong_category_item=rand(itemArrays[0].length);
+    let newList=itemArrays[category_number]
+    newList[wrong_category_item]=itemArrays[wrong_category_number][wrong_category_item];
+
+    context.list;
+    context.wrongItem=wrong_category_item;
+
     res.render('category_cross_out', context);
 });
 
@@ -77,10 +108,6 @@ app.use(function (req, res) {
 app.listen(app.get('port'), function () {
     console.log('Express started on http://flip3.oregonstate.edu:' + app.get('port') + '; press Ctrl-C to terminate.');
 });
-
-
-
-
 
 
 
