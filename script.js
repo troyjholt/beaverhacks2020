@@ -70,7 +70,7 @@ app.get('/category_cross_out', function (req, res) {
             context.category_correct=result.rows[0].name;
             context.category_wrong=result.rows[1].name;
 
-            client.query('SELECT name, URL, difficulty FROM (SELECT ROW_NUMBER() OVER (ORDER BY (SELECT 0)) AS rownumber, name, URL, difficulty FROM (SELECT words.name, URL, difficulty from category INNER JOIN words ON category_id=type where category.name='?' ORDER BY random()) AS randomized) AS selection WHERE rownumber <= 3;',[context.category_correct], (err, result) => {
+            client.query('SELECT name, URL, difficulty FROM (SELECT ROW_NUMBER() OVER (ORDER BY (SELECT 0)) AS rownumber, name, URL, difficulty FROM (SELECT words.name, URL, difficulty from category INNER JOIN words ON category_id=type where category.name=$1 ORDER BY random()) AS randomized) AS selection WHERE rownumber <= 3;', [context.category_correct], (err, result) => {
                 release()
                 if (err) {
                     return console.error('Error executing query', err.stack)
