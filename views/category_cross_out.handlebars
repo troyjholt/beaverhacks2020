@@ -6,8 +6,14 @@ category_cross_out plays here.
 <ol>
     {{#each tokens}}
         <li>
-            <p><img src="{{this.url}}"><br>
-                {{this.name}} ({{this.difficulty}}, {{this.matched}})</p>
+        <p><img src="{{this.url}}"><br>
+            {{this.name}} (
+
+            {{#if this.matched}}
+                CORRECT
+            {{else}}
+                INCORRECT
+            {{/if}} WORD)
         </li>
     {{/each}}
 </ol>
