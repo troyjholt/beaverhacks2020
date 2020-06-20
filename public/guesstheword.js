@@ -2,38 +2,56 @@
 var words = ["abruptly","absurd","abyss","affix","askew","avenue","awkward","axiom","azure","bagpipes","bandwagon"];
 var alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 var gameStatus = "inProgress";
+var apples = []
 var difficulty;
 var idx;
 var word;
-var lives;
+var lives = 6;
 var blanks;
+
+// Load images for various states of the apple
+for(i = 0; i <= lives; i++){
+    apples[i] = "/apples/apple" + i + ".png";
+}
+
+console.log(apples);
+
+
 
 document.addEventListener('DOMContentLoaded', pageLoad);
 
 // Create an anchor node that can be passed to all tabs
 var anchor = document.createElement("div");
+anchor.className = "wrapper";
 function generateGame(){
     let ele = document.createElement("p");
     ele.id = "status";
     anchor.appendChild(ele);
 
+    let wrapper = document.createElement("div");
+    wrapper.className = "wrapper";
+    ele = document.createElement("img");
+    ele.id = "apple";
+    wrapper.appendChild(ele);
+    anchor.appendChild(wrapper);
+
     ele= document.createElement("p");
     ele.id = "blanks";
-    anchor.appendChild(ele);
-
-    ele = document.createElement("p");
-    ele.id = "lives";
     anchor.appendChild(ele);
 
     ele = document.createElement("div");
     ele.id = "wordpool";
     anchor.appendChild(ele);
 
+    
+    wrapper = document.createElement("div");
+    wrapper.className = "wrapper";
     ele = document.createElement("button");
     ele.id = "reset";
     ele.setAttribute("onClick","gameReset()");
     ele.appendChild(document.createTextNode("Play Again"));
-    anchor.appendChild(ele);
+    wrapper.appendChild(ele);
+    anchor.appendChild(wrapper);
 
     document.getElementById("easy").appendChild(anchor);
     generateButtons();
@@ -61,12 +79,12 @@ function generateButtons(){
 
         //If found, the user should no longer be able to click it
         button.disabled = true;
-        if(found == false)
+        if(found == false){
             lives--;
+            document.getElementById("apple").setAttribute("src", apples[lives]);
+        }
 
-        // Update the display of lives and guesses
-        document.getElementById("lives").innerHTML = lives;
-        document.getElementById("blanks").innerHTML = blanks.toString();
+        updateDisplay();
 
         checkGameProgress();
  
@@ -77,14 +95,19 @@ function generateButtons(){
   }
 }
 
+function updateDisplay(){
+    let current = "";
+    for(let i = 0; i < blanks.length; i++)
+        current += blanks[i] + " ";
+    document.getElementById("blanks").innerHTML = current;
+}
+
 // Loads the initial anchor node containing all the game elements and generates buttons
 function pageLoad(){
-
   	generateGame();
     gameReset();
+    updateDisplay();
 
-	document.getElementById("blanks").innerHTML = blanks;
-    document.getElementById("lives").innerHTML = lives;
     // Make the how-to play page the default
     document.getElementById("defaultOpen").click();
 }
@@ -143,13 +166,14 @@ function gameReset(){
     idx = Math.floor(Math.random() * (words.length - 1 - 1));
     word = words[idx];
     lives = 6;
+    document.getElementById("apple").setAttribute("src", apples[lives]);
  
     blanks = [];
     for(let i = 0; i < word.length; i++){
         blanks[i] = "_";
     }
-    document.getElementById("lives").innerHTML = lives;
-    document.getElementById("blanks").innerHTML = blanks.toString();
+ 
+    updateDisplay();
 
     if(gameStatus != "inProgress"){
         let status = document.getElementById("status");

@@ -112,3 +112,72 @@ div.body_content_box {
     width: 80%;
 }
 
+
+/* Styling for guess the word added below this point */
+button.alphabet {
+    padding: 5px;
+    margin: 5px;
+    font-size: 25px;
+}
+
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+  width: 70%;
+}
+
+
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+
+.tab button:hover {
+  background-color: #ddd;
+}
+
+
+.tab button.active {
+  background-color: #ccc;
+}
+
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+  width: 70%;
+}
+
+#blanks {
+    font-size: 60px;
+    text-align: center;
+    margin: 0px;
+
+}
+
+.wrapper{
+    text-align: center;
+}
+
+#wordpool {
+    width: 60%;
+    text-align: center;
+    padding: 10px;
+    display:inline-block;
+}
+
+
+#reset{
+    margin: 5px;
+    padding: 10px;
+    display: inline-block;
+}
