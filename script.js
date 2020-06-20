@@ -59,25 +59,29 @@ app.get('/category_cross_out', function (req, res) {
             return console.error('Error acquiring client.', err.stack)
         }
 
-        let score=0;
+        context.score=0;
 
-        rand1=rand()
         client.query('SELECT rownumber, name FROM (SELECT ROW_NUMBER() OVER (ORDER BY (SELECT 0)) as rownumber, name FROM (SELECT name FROM category ORDER BY random()) AS randomized) AS selection WHERE rownumber <= 2;', (err, result) => {
             release()
             if (err) {
                 return console.error('Error executing query', err.stack)
             }
 
-            context.category1=result.rows[0].name;
-            context.category2=result.rows[1].name;
+            context.wrong_position=rand(3)+1;
+            context.category_correct=result.rows[0].name;
+            context.category_wrong=result.rows[1].name;
 
-            console.log();
-            console.log("context.category1: " + context.category1);
-            console.log();
-            console.log(" context.category2: " +  context.category2);
+            client.query('SELECT name, URL, difficulty FROM (SELECT ROW_NUMBER() OVER (ORDER BY (SELECT 0)) AS rownumber, name, URL, difficulty FROM (SELECT words.name, URL, difficulty from category INNER JOIN words ON category_id=type where category.name=? ORDER BY random()) AS randomized) AS selection WHERE rownumber <= 3;',[context.category_correct], (err, result) => {
+                release()
+                if (err) {
+                    return console.error('Error executing query', err.stack)
+                }
 
+                context.correct=result.rows;
+                context.correctstring=JSON.stringify(result.rows);
 
-            res.render('category_cross_out', context);
+                res.render('category_cross_out', context);
+            })
         })
     });
 

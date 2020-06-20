@@ -1,11 +1,16 @@
 
-
 category_cross_out plays here.
-
+<p><br></p>
 <span>The two categories are: {{category1}} and {{category2}}.</span>
 
 
   <p><br></p>
-    The Wrong Item is #{{wrongItem}}
+    The correct items are: {{correctstring}}
+
+<p><br></p>
+
+{{#each correct}}
+    {{this.name}}, {{this.URL}}, {{this.difficulty}}
+{{/each}}
 
 </div>
