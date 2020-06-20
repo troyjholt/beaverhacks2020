@@ -10,7 +10,10 @@ The wrong position is: {{wrong_position}}
 <p><br></p>
 
 {{#each correct}}
-    {{this.name}}, {{this.url}}, {{this.difficulty}}
+
+    <p><img src="{{this.url}}"><br>
+        {{this.name}} ({{this.difficulty}}, {{this.match}})</p>
+
 {{/each}}
 
 </div>

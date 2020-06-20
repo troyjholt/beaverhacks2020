@@ -2,7 +2,6 @@ function category_cross_out_implementation(pool, app, rand) {
 
     /* This GET request handles loading the category-cross-out game. */
     app.get('/category_cross_out', function (request, response, next) {
-
         let context = {};
 
         pool.connect((err, client, release) => {
@@ -23,7 +22,7 @@ function category_cross_out_implementation(pool, app, rand) {
                 context.category_correct = result.rows[0].name;
                 context.category_wrong = result.rows[1].name;
 
-                client.query('SELECT name, URL, difficulty FROM (SELECT ROW_NUMBER() OVER (ORDER BY (SELECT 0)) AS rownumber, name, URL, difficulty FROM (SELECT words.name, URL, difficulty from category INNER JOIN words ON category_id=type where category.name=$1 ORDER BY random()) AS randomized) AS selection WHERE rownumber <= 3;', [context.category_correct], (err, result) => {
+                client.query('SELECT name, URL, difficulty, type FROM ((SELECT name, URL, difficulty, type FROM (SELECT ROW_NUMBER() OVER (ORDER BY (SELECT 0)) AS rownumber, name, URL, difficulty, type FROM (SELECT words.name, URL, difficulty, category.name AS type from category INNER JOIN words ON category_id=type where category.name=$1 ORDER BY random()) AS randomized) AS selection WHERE rownumber <=3) UNION (SELECT name, URL, difficulty, type FROM (SELECT ROW_NUMBER() OVER (ORDER BY (SELECT 0)) AS rownumber, name, URL, difficulty, type FROM (SELECT words.name, URL, difficulty, category.name AS type from category INNER JOIN words ON category_id=type where category.name=$2 ORDER BY random()) AS randomized) AS selection WHERE rownumber < 2))AS finalFour ORDER BY random();', [context.category_correct, context.category_wrong], (err, result) => {
                     release()
                     /* Skips to the 500 page is an error is returned.*/
                     if (err) {
@@ -32,6 +31,8 @@ function category_cross_out_implementation(pool, app, rand) {
                     }
 
                     context.correct = result.rows;
+
+
                     context.correctstring = JSON.stringify(result.rows);
 
                     response.render('category_cross_out', context);
