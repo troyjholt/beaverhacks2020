@@ -1,5 +1,5 @@
 /* Import the module in category_cross_out.js */
-const {category_cross_out} = require('./category_cross_out.js')
+const {category_cross_out} = require('./public/category_cross_out.js')
 
 /* Setup the connection to PostgreSQL */
 const {Pool} = require('pg')
@@ -47,7 +47,7 @@ var rand = require('random-seed').create();
 
 
 /* This GET request handles loading the front page. */
-app.get('/', function (req, res) {
+app.get('/', function (req, res, next) {
     let context = {};
     res.render('front', context);
 });
@@ -56,34 +56,34 @@ app.get('/', function (req, res) {
 category_cross_out(pool, app, rand)
 
 /* This GET request handles loading the shape-match page. */
-app.get('/shape_match', function (req, res) {
+app.get('/shape_match', function (req, res, next) {
     let context = {};
     res.render('shape_match', context);
 });
 
 
 /* This GET request handles loading the guess-the-word page. */
-app.get('/guess_the_word', function (req, res) {
+app.get('/guess_the_word', function (req, res, next) {
     let context = {};
     res.render('guess_the_word', context);
 });
 
 
 /* This GET request handles loading the contact page. */
-app.get('/contact', function (req, res) {
+app.get('/contact', function (req, res, next) {
     let context = {};
     res.render('contact', context);
 });
 
 
 /* This GET request handles loading the contact page. */
-app.get('/contact', function (req, res) {
+app.get('/contact', function (req, res, next) {
     let context = {};
     res.render('contact', context);
 });
 
 /* This GET request handles loading the help page. */
-app.get('/help', function (req, res) {
+app.get('/help', function (req, res, next) {
     let context = {};
     res.render('help', context);
 });
