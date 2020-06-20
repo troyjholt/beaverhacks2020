@@ -62,7 +62,6 @@ app.get('/category_cross_out', function (req, res) {
         context.score=0;
 
         client.query('SELECT rownumber, name FROM (SELECT ROW_NUMBER() OVER (ORDER BY (SELECT 0)) as rownumber, name FROM (SELECT name FROM category ORDER BY random()) AS randomized) AS selection WHERE rownumber <= 2;', (err, result) => {
-            release()
             if (err) {
                 return console.error('Error executing query', err.stack)
             }
