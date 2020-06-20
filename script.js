@@ -1,3 +1,5 @@
+const {category_cross_out}=require('./category_cross_out')
+
 /* Setup the connection to PostgreSQL */
 const { Pool } = require('pg')
 const pool = new Pool({
@@ -49,43 +51,8 @@ app.get('/', function (req, res) {
     res.render('front', context);
 });
 
-/* This GET request handles loading the category-cross-out game. */
-app.get('/category_cross_out', function (req, res) {
-
-    let context = {};
-
-    pool.connect((err, client, release) => {
-        if (err) {
-            return console.error('Error acquiring client.', err.stack)
-        }
-
-        context.score=0;
-
-        client.query('SELECT rownumber, name FROM (SELECT ROW_NUMBER() OVER (ORDER BY (SELECT 0)) as rownumber, name FROM (SELECT name FROM category ORDER BY random()) AS randomized) AS selection WHERE rownumber <= 2;', (err, result) => {
-            if (err) {
-                return console.error('Error executing query', err.stack)
-            }
-
-            context.wrong_position=rand(3)+1;
-            context.category_correct=result.rows[0].name;
-            context.category_wrong=result.rows[1].name;
-
-            client.query('SELECT name, URL, difficulty FROM (SELECT ROW_NUMBER() OVER (ORDER BY (SELECT 0)) AS rownumber, name, URL, difficulty FROM (SELECT words.name, URL, difficulty from category INNER JOIN words ON category_id=type where category.name=$1 ORDER BY random()) AS randomized) AS selection WHERE rownumber <= 3;', [context.category_correct], (err, result) => {
-                release()
-                if (err) {
-                    return console.error('Error executing query', err.stack)
-                }
-
-                context.correct=result.rows;
-                context.correctstring=JSON.stringify(result.rows);
-
-                res.render('category_cross_out', context);
-            })
-        })
-    });
-
-
-});
+/* Calls category_cross_out function which imports category_cross_out.js as a module.*/
+category_cross_out(pool, app)
 
 /* This GET request handles loading the shape-match page. */
 app.get('/shape_match', function (req, res) {
