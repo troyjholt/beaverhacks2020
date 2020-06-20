@@ -92,11 +92,7 @@ function pageLoad(){
 // Checks whether the user has won or lost - is called every time an alphabet button is clicked
 function checkGameProgress(){
     let buttons = document.getElementsByClassName("alphabet");
-    if(gameStatus != "inProgress"){
-        for(i in buttons)
-            buttons[i].disabled = true;
-    }
-
+    
     if(blanks.join("") == word && lives > 0){
         gameStatus = "won";
         document.getElementById("status").innerHTML = "WINNER!";
@@ -104,6 +100,10 @@ function checkGameProgress(){
     if(blanks.toString() != word && lives <= 0){
         gameStatus = "lost";
         document.getElementById("status").innerHTML ="TRY AGAIN!";
+    }
+    if(gameStatus != "inProgress"){
+        for(i in buttons)
+            buttons[i].disabled = true;
     }
 }
 
@@ -154,6 +154,7 @@ function gameReset(){
     if(gameStatus != "inProgress"){
         let status = document.getElementById("status");
         status.removeChild(status.firstChild);
+        gameStatus = "inProgress";
     }
 }
 
