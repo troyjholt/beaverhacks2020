@@ -59,19 +59,24 @@ app.get('/category_cross_out', function (req, res) {
             return console.error('Error acquiring client.', err.stack)
         }
 
+        let score=0;
 
-        client.query('SELECT * FROM category', (err, result) => {
+        rand1=rand()
+        client.query('SELECT rownumber, name FROM (SELECT ROW_NUMBER() OVER (ORDER BY (SELECT 0)) as rownumber, name FROM (SELECT name FROM category ORDER BY random()) AS randomized) AS selection WHERE rownumber <= 2;', (err, result) => {
             release()
             if (err) {
                 return console.error('Error executing query', err.stack)
             }
 
-            context.x=JSON.stringify(result.rows);
+            context.category1=result.rows[0].name;
+            context.category2=result.rows[1].name;
 
             console.log();
-            console.log("result.rows[0]: " + result.rows);
+            console.log("context.category1: " + context.category1);
             console.log();
-            console.log("context.x: " + context.x);
+            console.log(" context.category2: " +  context.category2);
+
+
             res.render('category_cross_out', context);
         })
     });
