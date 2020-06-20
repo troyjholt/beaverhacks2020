@@ -32,10 +32,10 @@ function category_cross_out_implementation(pool, app, rand) {
 
                     context.tokens = result.rows;
                     for (let i = 0; i < 4; i++) {
-                        if (context.tokens.rows[i].type === context.tokens.category_wrong) {
-                            context.tokens.rows[i].matched=0;
+                        if (context.tokens[i].type === context.category_wrong) {
+                            context.tokens[i].matched=0;
                         }else{
-                            context.tokens.rows[i].matched=1;
+                            context.tokens[i].matched=1;
                         }
                     }
 
