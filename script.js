@@ -1,7 +1,8 @@
-const { category_cross_out } = require('./category_cross_out.js')
+/* Import the module in category_cross_out.js */
+const {category_cross_out} = require('./category_cross_out.js')
 
 /* Setup the connection to PostgreSQL */
-const { Pool } = require('pg')
+const {Pool} = require('pg')
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL || "localhost",
     max: 20,
@@ -18,7 +19,7 @@ const path = require('path');
 
 /* Set the path for loading assets like CSS and images.*/
 app.use(express.static(path.join(__dirname, '/public')));
-//
+
 /* Start express-handlebars. Set the main layout. */
 let handlebars = require('express-handlebars').create({defaultLayout: 'main'});
 
