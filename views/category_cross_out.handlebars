@@ -1,19 +1,14 @@
-
 category_cross_out plays here.
 <p><br></p>
 <span>The two categories are: {{category_correct}} and {{category_wrong}}.</span>
 <p><br></p>
-The wrong position is: {{wrong_position}}
-  <p><br></p>
-    The correct items are: {{correctstring}}
 
-<p><br></p>
-
-{{#each correct}}
-
-    <p><img src="{{this.url}}"><br>
-        {{this.name}} ({{this.difficulty}}, {{this.match}})</p>
-
-{{/each}}
-
+<ol>
+    {{#each correct}}
+        <li>
+            <p><img src="{{this.url}}"><br>
+                {{this.name}} ({{this.difficulty}}, {{this.matched}})</p>
+        </li>
+    {{/each}}
+</ol>
 </div>

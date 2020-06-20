@@ -30,10 +30,14 @@ function category_cross_out_implementation(pool, app, rand) {
                         return console.error('Error executing query', err.stack);
                     }
 
-                    context.correct = result.rows;
-
-
-                    context.correctstring = JSON.stringify(result.rows);
+                    context.tokens = result.rows;
+                    for (let i = 0; i < 4; i++) {
+                        if (context.tokens.rows[i].type === context.tokens.category_wrong) {
+                            context.tokens.rows[i].matched=0;
+                        }else{
+                            context.tokens.rows[i].matched=1;
+                        }
+                    }
 
                     response.render('category_cross_out', context);
                 })
