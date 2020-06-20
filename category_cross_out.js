@@ -1,4 +1,4 @@
-function category_cross_out_implementation(pool, app){
+function category_cross_out_implementation(pool, app, rand){
 
     /* This GET request handles loading the category-cross-out game. */
     app.get('/category_cross_out', function (request, response) {
@@ -37,7 +37,7 @@ function category_cross_out_implementation(pool, app){
     });
 }
 
-/*Modules is a special object which represents the current module.
+/*Modules is a special object which holds the exports dictionary.
 * Exports is a dictionary provided automatically by node.js that
 * has the keys which are the names of things in the module that
 * can be used and the values are the actual value/implementation

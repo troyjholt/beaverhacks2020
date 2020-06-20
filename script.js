@@ -52,7 +52,7 @@ app.get('/', function (req, res) {
 });
 
 /* Calls category_cross_out function which imports category_cross_out.js as a module.*/
-category_cross_out(pool, app)
+category_cross_out(pool, app, rand)
 
 /* This GET request handles loading the shape-match page. */
 app.get('/shape_match', function (req, res) {
