@@ -1,4 +1,4 @@
-const {category_cross_out}=require('./category_cross_out')
+const { category_cross_out } = require('./category_cross_out.js')
 
 /* Setup the connection to PostgreSQL */
 const { Pool } = require('pg')

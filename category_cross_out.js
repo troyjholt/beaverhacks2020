@@ -37,9 +37,9 @@ function category_cross_out_implementation(pool, app){
     });
 }
 
-/*Modules is given by javascript which represents the current module.
+/*Modules is a special object which represents the current module.
 * Exports is a dictionary provided automatically by node.js that
 * has the keys which are the names of things in the module that
 * can be used and the values are the actual value/implementation
 * of those things.*/
-module.exports.category_cross_out=category_cross_out_implementation;
+module.exports.category_cross_out = category_cross_out_implementation;
