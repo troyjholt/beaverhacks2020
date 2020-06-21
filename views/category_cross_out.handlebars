@@ -21,7 +21,7 @@
 
 {{#each tokens}}
     <input type="hidden" name="card_id" value="{{this.id}}">
-    <input type="hidden" id="select_{{this.id}}" name="selection_status" value="select_{{this.id}}">
+    <input type="hidden" id="select_{{this.id}}" name="selection_status" value="null">
 
     {{#if this.matched}}
         <input type="hidden" name="correct" value="Incorrect">
@@ -81,12 +81,14 @@
         function highlight(card) {
             highlighted = card;
             card.style.boxShadow = "0px 0px 17px 3px rgba(0,163,250,1)";
-            document.getElementById("select_"+card).value = "True";
+            let selected=document.getElementById("select_"+card);
+            selected.nodeValue="Selected";
         }
 
         function deHighlight(card) {
             card.style.boxShadow = "0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05)";
-            document.getElementById("select_"+card).value = "False";
+            let notSelected=document.getElementById("select_"+card);
+            notSelected.nodeValue="null";
         }
     }
 
