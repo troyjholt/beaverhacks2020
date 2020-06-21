@@ -11,12 +11,8 @@ var blanks;
 
 // Load images for various states of the apple
 for(i = 0; i <= lives; i++){
-    apples[i] = "/apples/apple" + i + ".png";
+    apples[i] = "/apples/Apple" + i + ".png";
 }
-
-console.log(apples);
-
-
 
 document.addEventListener('DOMContentLoaded', pageLoad);
 
@@ -32,6 +28,8 @@ function generateGame(){
     wrapper.className = "wrapper";
     ele = document.createElement("img");
     ele.id = "apple";
+    ele.setAttribute("width", "200");
+    ele.setAttribute("height", "200");
     wrapper.appendChild(ele);
     anchor.appendChild(wrapper);
 
@@ -181,4 +179,3 @@ function gameReset(){
         gameStatus = "inProgress";
     }
 }
-
