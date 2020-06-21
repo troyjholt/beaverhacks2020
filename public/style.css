@@ -218,6 +218,13 @@ design layout which can be found here: https://material.io/design*/
     background-size: 80px;
 }
 
+.tongue_card{
+    background-image: url('logos/tip_of_my_tongue_logo.png');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 80px;
+}
+
 .construction_card{
     background-image: url('logos/construction_logo.png');
     background-repeat: no-repeat;
