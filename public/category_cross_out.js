@@ -22,9 +22,12 @@ function category_cross_out_implementation(pool, app) {
 
         if (request.body.answer === request.body.selection) {
             context.score++;
-            context.result = "correct";
-        } else {
-            context.result = "wrong";
+            context.result = "Your previous answer was correct!";
+        } else if(request.body.selection===null{
+            context.result = "Oops! You forgot to select an item.";
+            context.game--;
+        }else{
+            context.result = "Your previous answer was wrong.";
         }
 
         renderCCO(request, response, next, context);
