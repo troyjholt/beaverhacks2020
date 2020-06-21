@@ -24,7 +24,7 @@ function category_cross_out_implementation(pool, app) {
         context.hide=request.body.hide;
 
         if (request.body.selection==='null'){
-            context.result = "Oops! You forgot to select an item.";
+            context.result = "Oops! You forgot to select an item. Click on the item that doesn't belong!";
             context.game--;
 
         } else if(request.body.answer === request.body.selection){
@@ -67,6 +67,14 @@ function category_cross_out_implementation(pool, app) {
 
                     context.tokens = result.rows;
                     for (let i = 0; i < 4; i++) {
+
+                        if(context.hide===1){
+                            context.tokens[i].hide=1;
+
+                        }else{
+                            context.tokens[i].hide=0;
+                        }
+
                         if (context.tokens[i].type === context.category_wrong) {
                             context.tokens[i].matched = 0;
                             context.solution = context.tokens[i].name;

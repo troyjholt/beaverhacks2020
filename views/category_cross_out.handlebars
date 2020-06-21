@@ -6,8 +6,8 @@
 
     <div class="cco_difficulty_settings">
 
-        <img src="word_hint_images/pictures_on.jpg" id="difficulty_easy" {{#if hide}}style="display: none" {{/if}}>
-        <img src="word_hint_images/pictures_off.jpg" id="difficulty_hard" {{#if hide}}style="display: flex" {{/if}}>
+        <img src="word_hint_images/pictures_on.jpg" id="difficulty_easy" {{#if hide}}style="display: none"{{/if}}>
+        <img src="word_hint_images/pictures_off.jpg" id="difficulty_hard" {{#if hide}}style="display: flex"{{/if}}>
     </div>
 </div>
 
@@ -19,7 +19,7 @@
 
             <div id="{{this.name}}">
 
-        <img src="word_hint_images/{{this.url}}" class="cco_hint_image" id="img_{{this.id}}" {{#if hide}}style="display: none" {{/if}}>
+        <img src="word_hint_images/{{this.url}}" class="cco_hint_image" id="img_{{this.id}}" {{#if hide}}style="display: none"{{/if}}>
 
             </div>
 
@@ -47,7 +47,7 @@
         <span>One of these words doesn't belong in the same category as the others. Select
               the word that doesn't belong.</span>
     {{else}}
-    <span>{{result}}.</span>
+    <span>{{result}}</span>
     {{/if}}<br>
     <span>Your current score is {{score}}/{{game}}.</span>
 </div>
