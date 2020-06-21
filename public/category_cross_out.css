@@ -94,13 +94,20 @@
     font-weight: 600;
 }
 
-/* Creates space between the cards.*/
-.cco_card_spacer{
-    width: 10%;
+/* Whitespace created when images are toggled off.*/
+.cco_card_spacer1{
+    display: none;
+    width: 200px;
+    height: 100px;
+}
+.cco_card_spacer2{
+    display: none;
+    width: 200px;
+    height: 100px;
 }
 
 .cco_hint_image{
-    display: inline;
+    display: flex;
 }
 
 .cco_tracker_container{
