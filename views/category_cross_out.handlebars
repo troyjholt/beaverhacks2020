@@ -17,10 +17,12 @@
 
 </div>
 
+
+
 <form method="POST" id="theForm">
     <input type="hidden" name="Solution" value="{{solution}}" id="solution">
-    <input type="hidden" name="Selected" value="null" id="selected_card">
     <input type="hidden" name="Score" value="{{score}}" id="score">
+    <input type="hidden" name="Score" value="null" id="selected_card">
 </form>
 
 
@@ -38,7 +40,7 @@
         let card_2 = document.getElementById("card_2");
         let card_3 = document.getElementById("card_3");
         let card_4 = document.getElementById("card_4");
-        let select = document.getElementById("selected_card");
+        let selected= document.getElementById("selected_card")
 
         let highlighted = null;
 
@@ -74,15 +76,15 @@
         function highlight(card) {
             highlighted = card;
             card.style.boxShadow = "0px 0px 17px 3px rgba(0,163,250,1)";
-            select.nodeValue = "" + card.id;
+            selected.nodeValue = card.id;
+            selected.value = card.id;
         }
 
         function deHighlight(card) {
             card.style.boxShadow = "0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05)";
         }
-
-
     }
-
 </script>
+
+
 
