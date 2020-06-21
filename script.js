@@ -55,6 +55,13 @@ app.get('/', function (req, res, next) {
 /* Calls category_cross_out function which imports category_cross_out.js as a module.*/
 category_cross_out(pool, app, rand)
 
+/* This GET request handles loading the guess-the-word page. */
+app.get('/guess_the_word', function (req, res, next) {
+    let context = {};
+
+    res.render('guess_the_word', context);
+});
+
 /* This GET request handles loading the shape-match page. */
 app.get('/shape_match', function (req, res, next) {
     let context = {};
@@ -62,11 +69,10 @@ app.get('/shape_match', function (req, res, next) {
 });
 
 
-/* This GET request handles loading the guess-the-word page. */
-app.get('/guess_the_word', function (req, res, next) {
+/* This GET request handles loading the tip-of-my-tongue page. */
+app.get('/tip_of_my_tongue', function (req, res, next) {
     let context = {};
-
-    res.render('guess_the_word', context);
+    res.render('construction', context);
 });
 
 /* This GET request handles loading the help page. */
