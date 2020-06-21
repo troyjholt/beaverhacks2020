@@ -29,7 +29,7 @@
 
 .cco_difficulty_settings{
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-evenly;
     align-items: center;
     border: solid;
     border: #cccccc;
