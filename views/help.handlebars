@@ -25,7 +25,7 @@
     <div class="cco_card_container help">
         <div class="cco_backdrop_for_variable_heights help">
             <div class="cco_single_card help">
-                <span class="material-icons help" onclick="resetResources(event, 'learn')">arrow_back</span>
+                <div class="help_arrow"><span class="material-icons help" onclick="resetResources(event, 'learn')">arrow_back</span></div>
                 <h3>WHAT IS APHASIA?</h3>
                 <p>"Aphasia is an impairment of language, affecting the production or comprehension of speech and the ability to read or write. Aphasia is always due to injury to the brain-most commonly from a stroke, particularly in older individuals. But brain injuries resulting in aphasia may also arise from head trauma, from brain tumors, or from infections.</p>
                 <p>Aphasia can be so severe as to make communication with the patient almost impossible, or it can be very mild. It may affect mainly a single aspect of language use, such as the ability to retrieve the names of objects, or the ability to put words together into sentences, or the ability to read. More commonly, however, multiple aspects of communication are impaired, while some channels remain accessible for a limited exchange of information." -- Aphasia.org</p>
@@ -41,7 +41,7 @@
     <div class="cco_card_container help">
         <div class="cco_backdrop_for_variable_heights help">
             <div class="cco_single_card help">
-                <span class="material-icons help" onclick="resetResources(event, 'contact')">arrow_back</span>
+                <div class="help_arrow"><span class="material-icons help" onclick="resetResources(event, 'contact')">arrow_back</span></div>
                 {{#if form}}
                     <h3>CONTACT US</h3>
                     <p>Got questions? Shoot us an email!</p>
@@ -54,8 +54,10 @@
                                   placeholder="What's on your mind?"></textarea><br>
                         <input type="submit" name="submit" id="submit">
                     </form>
+                </div>
+
                 {{else}}<h3>Thanks for the feedback!</h3><span>We try to answer all messages within 365 days.<p><br></p></span>{{/if}}
-            </div>
+
             </div>
         </div>
     </div>

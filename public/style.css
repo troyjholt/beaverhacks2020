@@ -18,11 +18,17 @@ html, body {
     font-weight: 400;
 }
 
+.help_arrow{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+
 #title_link{
     text-decoration: none;
     color:#E3F2FD;
     background-color: #1A237E;
-
 }
 /* Container for the elements in the navigation bar. Stretches bar across the page and provides background.*/
 div.nav_container {
