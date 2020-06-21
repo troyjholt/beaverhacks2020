@@ -6,8 +6,8 @@
 
     <div class="cco_difficulty_settings">
 
-        <img src="word_hint_images/pictures_on.jpg" id="difficulty_easy" {{#if hide}}style="display: flex"{{/if}}>
-        <img src="word_hint_images/pictures_off.jpg" id="difficulty_hard" {{#if hide}}style="display: none"{{/if}}>
+        <img src="word_hint_images/pictures_on.jpg" id="difficulty_easy" {{#if hide}}style="display: none"{{/if}}>
+        <img src="word_hint_images/pictures_off.jpg" id="difficulty_hard" {{#if hide}}style="display: flex"{{/if}}>
     </div>
 </div>
 
@@ -79,9 +79,7 @@
         let hard = document.getElementById("difficulty_hard");
         let visibility= document.getElementById("hide_images");
 
-
         let highlighted = null;
-        let pictures=true;
 
         card_1.addEventListener('click', event => {
 
@@ -123,18 +121,16 @@
         }
 
         easy.addEventListener('click', event => {
-                hideEasy();
-                pictures=false;
+                hidePictures();
         })
 
         hard.addEventListener('click', event => {
-            hideHard();
-            pictures=true;
+            showPictures();
         })
 
 
 
-        function hideEasy(){
+        function hidePictures(){
 
             <!-- Toggles the difficulty button. -->
             easy.style.display='none';
@@ -150,7 +146,7 @@
             visibility.value = 1;
         }
 
-        function hideHard(){
+        function showPictures(){
 
 
             <!-- Toggles the difficulty button. -->
@@ -165,13 +161,7 @@
 
             <!-- Sets whether or not the cards are hidden for the next round. -->
             visibility.value = 0;
-
-
         }
-
-
-
-
     }
 </script>
 

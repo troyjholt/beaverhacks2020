@@ -6,7 +6,7 @@ function category_cross_out_implementation(pool, app) {
         context.score = 0;
         context.game = 0;
         context.tutorial=1;
-        context.hide='false';
+        context.hide=0;
 
         renderCCO(request, response, next, context);
 
@@ -20,8 +20,22 @@ function category_cross_out_implementation(pool, app) {
         context.game=request.body.game;
         context.game++;
 
+        console.log("Body Request: ")
+        console.log(request.body);
+        console.log();
+
+
+        console.log("Body Hide Status: ")
+        console.log(request.body.hide);
+        console.log();
+
         /* This code handles determining if images need to be hidden for the next round.*/
         context.hide=request.body.hide;
+
+
+        console.log("Context Hide Status: ")
+        console.log(context.hide);
+        console.log();
 
         if (request.body.selection==='null'){
             context.result = "Oops! You forgot to select an item. Click on the item that doesn't belong!";
@@ -68,9 +82,8 @@ function category_cross_out_implementation(pool, app) {
                     context.tokens = result.rows;
                     for (let i = 0; i < 4; i++) {
 
-                        if(context.hide===1){
+                        if(context.hide==='1'){
                             context.tokens[i].hide=1;
-
                         }else{
                             context.tokens[i].hide=0;
                         }
@@ -84,6 +97,10 @@ function category_cross_out_implementation(pool, app) {
 
                         context.tokens[i].id = "card_" + (i + 1);
                     }
+
+                    console.log("Context Object: ")
+                    console.log(context);
+                    console.log();
 
                     response.render('category_cross_out', context);
                 });
