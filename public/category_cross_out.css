@@ -48,6 +48,12 @@ img.cco_hint_image{
 
 }
 
+.cco_tracker_container{
+    display: flex;
+    justify-content: space-between;
+}
+
+
 /* material_button is adapted from the code by (c) Bence Szabó which
 uses the MIT license and can be found here: https://github.com/finnhvman/matter */
 
