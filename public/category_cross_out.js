@@ -1,15 +1,42 @@
-function category_cross_out_implementation(pool, app, rand) {
+function category_cross_out_implementation(pool, app) {
+    let score = 0;
+    let game = 0;
 
     /* This GET request handles loading the category-cross-out game. */
     app.get('/category_cross_out', function (request, response, next) {
         let context = {};
+        context.score = score;
+        context.game = game;
 
+        renderCCO(context);
+
+    });
+
+    /* This POST request handles checking the answer of the category-cross-out game. */
+    app.post('/category_cross_out', function (request, response, next) {
+        let context = {};
+        game++;
+
+        if (request.body.answer === request.body.selection) {
+            score++;
+            context.result = "correct";
+        } else {
+            context.result = "wrong";
+        }
+
+        context.score = score;
+        context.game = game;
+
+        renderCCO(context);
+    });
+
+
+    function renderCCO(pool, context) {
         pool.connect((err, client, release) => {
             if (err) {
                 return console.error('Error acquiring client.', err.stack)
             }
 
-            context.score = 0;
 
             client.query('SELECT rownumber, name FROM (SELECT ROW_NUMBER() OVER (ORDER BY (SELECT 0)) as rownumber, name FROM (SELECT name FROM category ORDER BY random()) AS randomized) AS selection WHERE rownumber <= 2;', (err, result) => {
                 /* Skips to the 500 page is an error is returned.*/
@@ -32,35 +59,23 @@ function category_cross_out_implementation(pool, app, rand) {
                     context.tokens = result.rows;
                     for (let i = 0; i < 4; i++) {
                         if (context.tokens[i].type === context.category_wrong) {
-                            context.tokens[i].matched=0;
-                            context.solution=context.tokens[i].name;
-                        }else{
-                            context.tokens[i].matched=1;
+                            context.tokens[i].matched = 0;
+                            context.solution = context.tokens[i].name;
+                        } else {
+                            context.tokens[i].matched = 1;
                         }
 
-                        context.tokens[i].id="card_"+(i+1);
+                        context.tokens[i].id = "card_" + (i + 1);
                     }
 
                     response.render('category_cross_out', context);
-                })
-            })
+                });
+            });
         });
-    });
-
-    /* This POST request handles checking the answer of the category-cross-out game. */
-    app.post('/category_cross_out', function (request, response, next) {
-        let context = {};
-
-        console.log(request.body);
-
-        response.render('category_cross_out', context);
-    });
+    }
 
 
 }
-
-
-
 
 
 /*Modules is a special object which holds the exports dictionary.
