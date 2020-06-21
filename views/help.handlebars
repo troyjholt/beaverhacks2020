@@ -48,8 +48,8 @@
         <div class="cco_backdrop_for_variable_heights help">
             <div class="cco_single_card help">
                 <span class="material-icons help" onclick="resetResources(event, 'contact')">arrow_back</span>
-                <h3>CONTACT US</h3>
                 {{#if form}}
+                    <h3>CONTACT US</h3>
                     <p>Got questions? Shoot us an email!</p>
                 <div>
                     <form method="post" action="">
@@ -60,7 +60,7 @@
                                   placeholder="What's on your mind?"></textarea><br>
                         <input type="submit" name="submit" id="submit">
                     </form>
-                {{else}} <span>We try to answer all messages within 365 days.</span>{{/if}}
+                {{else}}<h3>Thanks for the feedback!</h3><span>We try to answer all messages within 365 days.<p><br></p></span>{{/if}}
             </div>
             </div>
         </div>
