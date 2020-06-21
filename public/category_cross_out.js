@@ -82,7 +82,7 @@ function category_cross_out_implementation(pool, app) {
                     context.tokens = result.rows;
                     for (let i = 0; i < 4; i++) {
 
-                        if(context.hide===1 || context.hide==='1'){
+                        if(context.hide==='1'){
                             context.tokens[i].hide=1;
                         }else{
                             context.tokens[i].hide=0;
