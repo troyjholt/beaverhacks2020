@@ -54,6 +54,7 @@ uses the MIT license and can be found here: https://github.com/finnhvman/matter 
 .cco_button{
     display: flex;
     justify-content: flex-end;
+    margin-top: 10px;
 
 }
 .material_button {
@@ -72,6 +73,7 @@ uses the MIT license and can be found here: https://github.com/finnhvman/matter 
     color: #FFFFFF;
     background-color: #1A237E;
     box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    font-family: "Nunito", sans-serif;
     font-size: 20px;
     font-weight: 600;
     overflow: hidden;
