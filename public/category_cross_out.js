@@ -7,6 +7,8 @@ function category_cross_out_implementation(pool, app) {
         context.game = 0;
         context.tutorial=1;
         context.hide=0;
+        context.bing=0;
+        context.dun=0;
 
         renderCCO(request, response, next, context);
 
@@ -40,13 +42,19 @@ function category_cross_out_implementation(pool, app) {
         if (request.body.selection==='null'){
             context.result = "Oops! You forgot to select an item. Click on the item that doesn't belong!";
             context.game--;
+            context.bing=0;
+            context.dun=0;
 
         } else if(request.body.answer === request.body.selection){
             context.score++;
             context.result = "Your previous answer was correct!";
+            context.bing=1;
+            context.dun=0;
 
         }else{
             context.result = "Your previous answer was wrong.";
+            context.bing=0;
+            context.dun=1;
         }
 
         renderCCO(request, response, next, context);
