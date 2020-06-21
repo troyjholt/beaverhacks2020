@@ -60,15 +60,13 @@ img.cco_hint_image{
     margin: 20px;
     box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
     border-radius: 4px;
-
-    font-family: "Nunito", sans-serif;
-    font-size: 16px;
-    font-weight: 600;
 }
 
 .cco_score_tracker span {
+    font-family: "Nunito", sans-serif;
+    font-size: 20px;
+    font-weight: 600;
     margin: 20px;
-
 }
 
 /* material_button is adapted from the code by (c) Bence Szabó which
