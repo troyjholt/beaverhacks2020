@@ -83,6 +83,10 @@
     flex-grow: 1;
 }
 
+.card_image{
+    width: 200px;
+    height: 200px;
+}
 /* Resizes the card upon hover.*/
 .cco_single_card:hover{
     transform: scale(1.05);
@@ -97,13 +101,9 @@
 /* Whitespace created when images are toggled off.*/
 #cco_card_spacer1{
     display: none;
-    width: 200px;
-    height: 100px;
 }
 #cco_card_spacer2{
     display: none;
-    width: 200px;
-    height: 100px;
 }
 
 .cco_hint_image{
