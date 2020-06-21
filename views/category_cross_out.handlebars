@@ -42,8 +42,7 @@
 <div class="cco_score_tracker">
     {{#if game}}<span>Your previous answer was {{result}}.
     {{else}}
-        <span>One of these words doesn't belong in<br>
-              the same category as the others. Select<br>
+        <span>One of these words doesn't belong in the same category as the others. Select
               the word that doesn't belong.</span>
     {{/if}}</span><br>
     <span>Your current score is {{score}}/{{game}}.</span>
@@ -66,7 +65,7 @@
         let selected= document.getElementById("selection");
         let easy = document.getElementById("difficulty_easy");
         let hard = document.getElementById("difficulty_hard");
-        let pictures_to_change = document.getElementsByClassName("cco_hint_image");
+        let images_to_change = document.getElementsByTagName("img");
         let highlighted = null;
         let pictures=true;
 
@@ -123,10 +122,11 @@
             easy.style.display='none';
             hard.style.display='inline';
 
-            pictures_to_change[0].display='none';
-            pictures_to_change[1].display='none';
-            pictures_to_change[2].display='none';
-            pictures_to_change[3].display='none';
+
+            for (x in images_to_change) {
+                x.display='none';
+            }
+
         }
 
         function hideHard(){
