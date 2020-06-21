@@ -7,7 +7,7 @@
 .cco_title{
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    align-items: baseline;
     border: none;
     border-radius: 4px;
     min-width: 60%;
@@ -30,7 +30,7 @@
 .cco_difficulty_selection{
     display: flex;
     flex-grow: 1;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     border: solid;
     border: #cccccc;
