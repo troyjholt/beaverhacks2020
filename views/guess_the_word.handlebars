@@ -1,26 +1,41 @@
-<h1>Not Hangman</h1>
-<div class="tab">
-    <button class="tablinks" onclick="openDifficulty(event, 'howto')" id="defaultOpen">How-To</button>
-    <button class="tablinks" onclick="openDifficulty(event, 'easy')">Easy</button>
-    <button class="tablinks" onclick="openDifficulty(event, 'medium')">Medium</button>
-    <button class="tablinks" onclick="openDifficulty(event, 'hard')">Hard</button>
+<div class = "wrapper guess">
+    <h1>Guess the Word</h1>
+    <div class="tab">
+        <button class="tablinks" onclick="openDifficulty(event, 'howto')" id="defaultOpen">How-To</button>
+        <button class="tablinks" onclick="openDifficulty(event, 'easy')">Easy</button>
+        <button class="tablinks" onclick="openDifficulty(event, 'medium')">Medium</button>
+        <button class="tablinks" onclick="openDifficulty(event, 'hard')">Hard</button>
+    </div>
+
+
+    <div id="howto" class="tabcontent">
+        <h3>HOW TO PLAY</h3>
+            <div class="cco_card_container help">
+                <div class="cco_backdrop_for_variable_heights help">
+                    <div class="cco_single_card help">
+                        <p>Try to guess the hidden word.<br> <img src="/apples/howto1.png" style="max-height: 100px;"></p>
+                    </div>
+                </div>
+            
+                <div class="cco_backdrop_for_variable_heights help">
+                    <div class="cco_single_card help">
+                        <p>Every wrong answer, results in a bite to your apple.<br><img src="/apples/apple6.png" width="100px" height="100px"> <img src="/apples/apple3.png" width="100px" height="100px"></p>
+                    </div>
+                </div>
+            
+                <div class="cco_backdrop_for_variable_heights help">
+                    <div class="cco_single_card help">
+                        <p>Don't let your apple get eaten!<br><img src="/apples/apple0.png" width="100px" height="100px"></p>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <div id="easy" class="tabcontent"></div>
+
+    <div id="medium" class="tabcontent"></div>
+
+    <div id="hard" class="tabcontent"></div>
 </div>
-
-
-<div id="howto" class="tabcontent">
-    <h3>HOW TO PLAY</h3>
-    <p>
-    <ul>Try to guess the hidden word.</ul>
-    <ul>Every wrong answer, results in a bite to your apple.</ul>
-    <ul>Don't let your apple get eaten!</ul>
-    </p>
-</div>
-
-<div id="easy" class="tabcontent"></div>
-
-<div id="medium" class="tabcontent"></div>
-
-<div id="hard" class="tabcontent"></div>
-
 
 

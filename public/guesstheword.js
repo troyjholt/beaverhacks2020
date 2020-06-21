@@ -1,9 +1,8 @@
 //Variables needed globally
-var words = ["abruptly","absurd","abyss","affix","askew","avenue","awkward","axiom","azure","bagpipes","bandwagon"];
 var alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 var gameStatus = "inProgress";
 var apples = []
-var difficulty;
+var diff = easy;
 var idx;
 var word;
 var lives = 6;
@@ -22,6 +21,7 @@ anchor.className = "wrapper";
 function generateGame(){
     let ele = document.createElement("p");
     ele.id = "status";
+    ele.innerHTML = " ";
     anchor.appendChild(ele);
 
     let wrapper = document.createElement("div");
@@ -120,7 +120,7 @@ function checkGameProgress(){
     }
     if(blanks.toString() != word && lives <= 0){
         gameStatus = "lost";
-        document.getElementById("status").innerHTML ="TRY AGAIN!";
+        document.getElementById("status").innerHTML = "The word was <b>" + word + "</b>. Better luck next time!";
     }
     if(gameStatus != "inProgress"){
         for(i in buttons)
@@ -145,11 +145,12 @@ function openDifficulty(evt, difficulty){
 	for(i = 0; i < tablinks.length; i++)
 		tablinks[i].className = tablinks[i].className.replace(" active", "");
 	let tab = document.getElementById(difficulty);
-    tab.style.display = "block";
+    tab.style.display = "inline-block";
     tab.className += " active";
 
     if(tab.id != "howto")
         tab.appendChild(anchor);
+        diff = difficulty
         gameReset();
 	evt.currentTarget.className += " active";
 
@@ -161,8 +162,19 @@ function gameReset(){
     for(i in buttons)
         buttons[i].disabled = false;
 
-    idx = Math.floor(Math.random() * (words.length - 1 - 1));
-    word = words[idx];
+    if(diff == 'easy'){
+        idx = Math.floor(Math.random() * (easy.length - 1 - 1));
+        word = easy[idx];
+    }
+    else if(diff == 'medium'){
+        idx = Math.floor(Math.random() * (medium.length - 1 - 1));
+        word = medium[idx];
+    }
+    else{
+        idx = Math.floor(Math.random() * (hard.length - 1 - 1));
+        word = hard[idx];
+    }
+
     lives = 6;
     document.getElementById("apple").setAttribute("src", apples[lives]);
  
@@ -174,8 +186,54 @@ function gameReset(){
     updateDisplay();
 
     if(gameStatus != "inProgress"){
-        let status = document.getElementById("status");
-        status.removeChild(status.firstChild);
+        document.getElementById("status").innerHTML = "     ";
+        //status.removeChild(status.firstChild);
         gameStatus = "inProgress";
     }
 }
+
+
+var hard = ["abruptly", "absurd", "abyss", "affix", "askew", "avenue", "awkward", "axiom", "azure", "bagpipes", 
+            "bandwagon", "banjo", "bayou", "beekeeper", "bikini", "blitz", "blizzard", "boggle", "bookworm", 
+            "boxcar", "boxful", "buckaroo", "buffalo", "buffoon", "buxom", "buzzard", "buzzing", "buzzwords", 
+            "caliph", "cobweb", "cockiness", "croquet", "crypt", "curacao", "cycle", "daiquiri", "dirndl", 
+            "disavow", "dizzying", "duplex", "dwarves", "embezzle", "equip", "espionage", "euouae", "exodus", 
+            "faking", "fishhook", "fixable", "fjord", "flapjack", "flopping", "fluffiness", "flyby", "foxglove",
+            "frazzled", "frizzled", "fuchsia", "funny", "gabby", "galaxy", "galvanize", "gazebo", "giaour", "gizmo", 
+            "glowworm", "glyph", "gnarly", "gnostic", "gossip", "grogginess", "haiku", "haphazard", "hyphen", 
+            "iatrogenic", "icebox", "injury", "ivory", "ivy", "jackpot", "jaundice", "jawbreaker", "jaywalk", 
+            "jazziest", "jazzy", "jelly", "jigsaw", "jinx", "jiujitsu", "jockey", "jogging", "joking", "jovial", 
+            "joyful", "juicy", "jukebox", "jumbo", "kayak", "kazoo", "keyhole", "khaki", "kilobyte", "kiosk", 
+            "kitsch", "kiwifruit", "klutz", "knapsack", "larynx", "lengths", "lucky", "luxury", "lymph", "marquis", 
+            "matrix", "megahertz", "microwave", "mnemonic", "mystify", "naphtha", "nightclub", "nowadays", "numbskull", 
+            "nymph", "onyx", "ovary", "oxidize", "oxygen", "pajama", "peekaboo", "phlegm", "pixel", "pizazz", 
+            "pneumonia", "polka", "pshaw", "psyche", "puppy", "puzzling", "quartz", "queue", "quips", "quixotic", 
+            "quiz", "quizzes", "quorum", "razzmatazz", "rhubarb", "rhythm", "rickshaw", "schnapps", "scratch", "shiv", 
+            "snazzy", "sphinx", "spritz", "squawk", "staff", "strength", "strengths", "stretch", "stronghold", 
+            "stymied", "subway", "swivel", "syndrome", "thriftless", "thumbscrew", "topaz", "transcript", "transgress", 
+            "transplant", "triphthong", "twelfth", "twelfths", "unknown", "unworthy", "unzip", "uptown", "vaporize", 
+            "vixen", "vodka", "voodoo", "vortex", "voyeurism", "walkway", "waltz", "wave", "wavy", "waxy", 
+            "wellspring", "wheezy", "whiskey", "whizzing", "whomever", "wimpy", "witchcraft", "wizard", "woozy", 
+            "wristwatch", "wyvern", "xylophone", "yachtsman", "yippee", "yoked", "youthful", "yummy", "zephyr", 
+            "zigzag", "zigzagging", "zilch", "zipper", "zodiac", "zombie"];
+
+var medium = ["activity", "afterthought", "apartment", "appoint", "approve", "beginner", "boundary", "breathe", 
+              "calendar", "caption", "clothe", "colony", "competition", "concern", "condition", "creature", 
+              "crouton", "currency", "cycle", "devotion", "disguise", "dishonest", "distance", "disuse", "eager", 
+              "education", "exist", "famous", "feather", "feature", "fiction", "fragile", "friction", "grateful", 
+              "guardian", "household", "increase", "industry", "invention", "junction", "junior", "lawyer", 
+              "management", "mayor", "meanwhile", "memorable", "mention", "metal", "mightily", "minister", "nature", 
+              "neither", "option", "pardon", "passenger", "pickle", "picture", "pleasure", "popular", "proceed", 
+              "produce", "professor", "property", "quartet", "reason", "recess", "reduce", "reduction", "reply", 
+              "route", "scene", "scent", "stolen", "supporter", "sweater", "teachable", "televise", "though", 
+              "thread", "tidal", "triple", "victory", "volcano", "wealth", "weather", "weird", "wilderness", "wrist"]
+
+var easy = ["able", "aftermath", "afternoon", "appear", "attack", "attend", "breakfast", "brightly", "cabbage", 
+            "cable", "carpenter", "channel", "circle", "climb", "comfort", "comical", "confirm", "construct", 
+            "curtain", "customer", "damage", "decide", "delight", "disappear", "discover", "empty", "encourage", 
+            "entertain", "equal", "exactly", "forever", "fruit", "fuel", "group", "guard", "guest", "guide", "guitar", 
+            "handle", "health", "heart", "heavily", "helmet", "idea", "kindness", "level", "locket", "lumber", "magic", 
+            "melon", "meter", "money", "motor", "mountain", "partner", "perfect", "perhaps", "personal", "plastic", 
+            "pocket", "protect", "provide", "railway", "record", "reward", "shoulder", "socket", "stranger", "stroll", 
+            "subject", "suit", "supply", "temper", "theatre", "total", "toward", "treatment", "useful", "vacant", 
+            "windy", "writer"]

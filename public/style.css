@@ -125,6 +125,7 @@ button.alphabet {
   border: 1px solid #ccc;
   background-color: #f1f1f1;
   width: 70%;
+  display:inline-block;
 }
 
 
@@ -155,6 +156,8 @@ button.alphabet {
   border: 1px solid #ccc;
   border-top: none;
   width: 70%;
+  min-height: 550px;
+
 }
 
 #blanks {
@@ -168,8 +171,13 @@ button.alphabet {
     text-align: center;
 }
 
+.wrapper.guess{
+    text-align: center;
+}
+
+
 #wordpool {
-    width: 61%;
+    width: 50%;
     text-align: center;
     padding: 10px;
     display:inline-block;
@@ -186,4 +194,12 @@ button.alphabet {
     display: flex; flex-direction: rows; justify-content: center; align-items: center;
 }
 
+#status{
+    padding:0px;
+    height: 10px;
+}
+
+.tabcontent > h3{
+    font-size: 30px;
+}
 
