@@ -8,7 +8,7 @@ function category_cross_out_implementation(pool, app) {
         context.score = score;
         context.game = game;
 
-        renderCCO(context);
+        renderCCO(request, response, next, context);
 
     });
 
@@ -27,11 +27,12 @@ function category_cross_out_implementation(pool, app) {
         context.score = score;
         context.game = game;
 
-        renderCCO(context);
+        renderCCO(request, response, next, context);
     });
 
 
-    function renderCCO(pool, context) {
+    function renderCCO(request, response, next, context) {
+
         pool.connect((err, client, release) => {
             if (err) {
                 return console.error('Error acquiring client.', err.stack)
