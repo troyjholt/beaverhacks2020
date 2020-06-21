@@ -1,9 +1,3 @@
-<span>The two categories are: {{category_correct}} and {{category_wrong}}.</span>
-<br>
-<span>The solution is: {{solution}}.</span><br>
-<span>Your score is: {{score}}.</span>
-
-
 <div class="cco_card_container">
 
 {{#each tokens}}
@@ -29,6 +23,12 @@
 
 </form>
 
+
+<div class="cco_single_card">
+    <span>Great job!<br>
+    {{#if game}}Your previous answer was {{result}}.{{/if}}</span>
+    <span>Your current score is: {{score}}.</span>
+</div>
 
 <div class="cco_button">
     <button type="submit" class="material_button" form="theForm" value="Submit">CHECK MY ANSWER</button>
