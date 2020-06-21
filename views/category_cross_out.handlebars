@@ -6,8 +6,8 @@
 
     <div class="cco_difficulty_settings">
         <div>
-        <span id="difficulty_setting">EASY</span></div>
-        <div class="difficulty_setting_button_container"><img src="word_hint_images/pictures_on.png" id="difficulty_easy" {{#if hide}}style="display: none"{{/if}}>
+        <span id="difficulty_setting">Easy</span></div>
+        <div><img src="word_hint_images/pictures_on.png" id="difficulty_easy" {{#if hide}}style="display: none"{{/if}}>
         <img src="word_hint_images/pictures_off.png" id="difficulty_hard" {{#if hide}}style="display: flex"{{/if}}></div>
     </div>
 </div>
@@ -163,7 +163,7 @@
             spacer1_4.style.display='flex';
             spacer2_4.style.display='flex';
 
-            document.getElementById("difficulty_setting").textContent="HARD";
+            document.getElementById("difficulty_setting").textContent="Hard";
 
             <!-- Sets whether or not the cards are hidden for the next round. -->
             visibility.value = 1;
@@ -192,7 +192,7 @@
             spacer1_4.style.display='none';
             spacer2_4.style.display='none';
 
-            document.getElementById("difficulty_setting").textContent="EASY";
+            document.getElementById("difficulty_setting").textContent="Easy";
 
             <!-- Sets whether or not the cards are hidden for the next round. -->
             visibility.value = 0;
