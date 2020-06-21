@@ -3,7 +3,7 @@
 
 
 <div class="cco_card_container">
-<form method="POST" id="theForm">
+
 {{#each tokens}}
     <div class="cco_backdrop_for_variable_heights">
     <div class="cco_single_card" id="{{this.id}}">
@@ -11,20 +11,27 @@
 
         <h3>{{this.name}}</h3>
 
-        <input type="hidden" name="card_id" value="{{this.id}}">
-        <input type="hidden" id="select_{{this.id}}" name="selection_status" value="False">
-
-    {{#if this.matched}}
-            <input type="hidden" name="correct" value="Incorrect">
-        {{else}}
-    <input type="hidden" name="correct" value="Correct">
-{{/if}}
-
 </div>
 </div>
 {{/each}}
-</form>
+
 </div>
+
+<form method="POST" id="theForm">
+
+{{#each tokens}}
+    <input type="hidden" name="card_id" value="{{this.id}}">
+    <input type="hidden" id="select_{{this.id}}" name="selection_status" value="False">
+
+    {{#if this.matched}}
+        <input type="hidden" name="correct" value="Incorrect">
+    {{else}}
+        <input type="hidden" name="correct" value="Correct">
+    {{/if}}
+
+{{/each}}
+</form>
+
 
 <div class="cco_button">
     <button type="submit" class="material_button" form="theForm" value="Submit">CHECK MY ANSWER</button>
