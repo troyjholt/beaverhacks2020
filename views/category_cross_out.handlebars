@@ -1,3 +1,13 @@
+<div class="cco_header_container">
+    <div class="cco_difficulty_settings">
+
+        <a href="category_cross_out">New-Game</a>
+
+
+    </div>
+</div>
+
+
 <div class="cco_card_container">
 
 {{#each tokens}}
@@ -26,7 +36,7 @@
 <div class="cco_tracker_container">
 <div class="cco_score_tracker">
     {{#if game}}<span>Your previous answer was {{result}}.{{/if}}</span><br>
-    <span>Your current score is: {{score}}.</span>
+    <span>Your current score is {{score}}/{{game}}.</span>
 </div>
 
 <div class="cco_button">
