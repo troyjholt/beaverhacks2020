@@ -21,12 +21,14 @@ function category_cross_out_implementation(pool, app) {
         /* This code handles determining if images need to be hidden for the next round.*/
         context.hide=request.body.hide;
 
-        if (request.body.answer === request.body.selection) {
-            context.score++;
-            context.result = "Your previous answer was correct!";
-        } else if(request.body.selection===null){
+        if (request.body.selection===null){
             context.result = "Oops! You forgot to select an item.";
             context.game--;
+
+        } else if(request.body.answer === request.body.selection){
+            context.score++;
+            context.result = "Your previous answer was correct!";
+
         }else{
             context.result = "Your previous answer was wrong.";
         }
