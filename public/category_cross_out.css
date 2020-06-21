@@ -72,6 +72,9 @@
     flex-shrink: 1;
 }
 
+/* material cards adapted from the code by (c) Faizan Saiyed which
+can be found here: https://codepen.io/saiyedfaizan19 and the material
+design layout which can be found here: https://material.io/design*/
 
 /* This container hols the cards.*/
 #cco_card_container{
