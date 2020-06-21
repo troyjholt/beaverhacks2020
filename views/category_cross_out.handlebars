@@ -77,7 +77,7 @@
         function highlight(card) {
             highlighted = card;
             card.style.boxShadow = "0px 0px 17px 3px rgba(0,163,250,1)";
-            selected.value = card[0].id;
+            selected.value = card.firstChild.id;
         }
 
         function deHighlight(card) {
