@@ -1,22 +1,33 @@
-
 <span>The two categories are: {{category_correct}} and {{category_wrong}}.</span>
 <p><br></p>
 
 
 <div class="cco_card_container">
+<form action="https://testy.requestcatcher.com/" method="POST">
+{{#each tokens}}
+    <div class="cco_backdrop_for_variable_heights">
+    <div class="cco_single_card" id="{{this.id}}">
+        <img src="word_hint_images/{{this.url}}" class="cco_hint_image">
 
-    {{#each tokens}}
-        <div class="cco_backdrop_for_variable_heights">
-            <div class="cco_single_card" id="{{this.id}}">
-                <img src="word_hint_images/{{this.url}}" class="cco_hint_image">
-                <h3>{{this.name}}</h3>
-            </div>
-        </div>
-    {{/each}}
+        <h3>{{this.name}}</h3>
+
+        <input type="hidden" name="card_id" value="{{this.id}}">
+        <input type="hidden" id="select_{{this.id}}" name="selection_status" value="False">
+
+    {{#if this.matched}}
+            <input type="hidden" name="correct" value="Incorrect">
+        {{#else}}
+    <input type="hidden" name="correct" value="Correct">
+{{/if}}
+
+</div>
+</div>
+{{/each}}
+</form>
 </div>
 
 <div class="cco_button">
-    <button class="material_button">CHECK MY ANSWER</button>
+    <button type="submit" class="material_button">CHECK MY ANSWER</button>
 </div>
 
 
@@ -63,10 +74,12 @@
         function highlight(card) {
             highlighted = card;
             card.style.boxShadow = "0px 0px 17px 3px rgba(0,163,250,1)";
+            document.getElementById("select_"+card).value = "True";
         }
 
         function deHighlight(card) {
             card.style.boxShadow = "0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05)";
+            document.getElementById("select_"+card).value = "False";
         }
     }
 
