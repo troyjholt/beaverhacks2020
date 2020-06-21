@@ -83,6 +83,10 @@
     flex-grow: 1;
 }
 
+.card_image{
+    width: 200px;
+    height: 200px;
+}
 /* Resizes the card upon hover.*/
 .cco_single_card:hover{
     transform: scale(1.05);
