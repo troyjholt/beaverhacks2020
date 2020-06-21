@@ -27,6 +27,7 @@
     margin: 20px;
 }
 
+/* This CSS controls the button the turns the images on and off.*/
 #difficulty_easy{
     display: inline;
 }
@@ -35,6 +36,17 @@
     display: none;
 }
 
+
+/* This section fills the card with empty space when the image is NOT displayed.*/
+#spacer_bottom{
+
+    display: none;
+}
+
+#spacer_top{
+
+    display: none;
+}
 /* Container for the card. It also requires the backdrop_for_variable_heights div to
    account for potential varying heights amongst the cards. (Otherwise, they'll all
    resize to be the same height.*/

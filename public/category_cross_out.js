@@ -17,6 +17,9 @@ function category_cross_out_implementation(pool, app) {
         context.game=request.body.game;
         context.game++;
 
+        /* This code handles determining if images need to be hidden for the next round.*/
+        context.hide=request.body.hide;
+
         if (request.body.answer === request.body.selection) {
             context.score++;
             context.result = "correct";
