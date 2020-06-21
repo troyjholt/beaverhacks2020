@@ -6,7 +6,7 @@ function category_cross_out_implementation(pool, app) {
         context.score = 0;
         context.game = 0;
         context.tutorial=1;
-        context.hide='false';
+        context.hide=0;
 
         renderCCO(request, response, next, context);
 
