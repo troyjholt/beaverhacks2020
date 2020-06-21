@@ -18,7 +18,6 @@ function category_cross_out_implementation(pool, app, rand) {
                     return console.error('Error executing query', err.stack);
                 }
 
-                context.wrong_position = rand(3) + 1;
                 context.category_correct = result.rows[0].name;
                 context.category_wrong = result.rows[1].name;
 
@@ -40,8 +39,6 @@ function category_cross_out_implementation(pool, app, rand) {
 
                         context.tokens[i].id="card_"+(i+1);
                     }
-
-
 
                     response.render('category_cross_out', context);
                 })
