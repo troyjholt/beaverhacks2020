@@ -12,27 +12,20 @@
 </div>
 
 
-<div id="cco_card_container_easy">
+<div id="cco_card_container">
 {{#each tokens}}
     <div class="cco_backdrop_for_variable_heights">
     <div class="cco_single_card" id="{{this.id}}">
 
+        <div id="difficulty_management_{{this.id}}">
         <img src="word_hint_images/{{this.url}}" class="cco_hint_image" id="{{this.name}}">
+        </div>
         <h3>{{this.name}}</h3>
     </div>
 </div>
 {{/each}}
 </div>
 
-<div id="cco_card_container_hard">
-    {{#each tokens}}
-        <div class="cco_backdrop_for_variable_heights">
-            <div class="cco_single_card" id="{{this.id}}">
-                <h3>{{this.name}}</h3>
-            </div>
-        </div>
-    {{/each}}
-</div>
 
 
 <form method="POST" id="theForm">
@@ -68,13 +61,15 @@
         let card_3 = document.getElementById("card_3");
         let card_4 = document.getElementById("card_4");
 
+        let image_1 = document.getElementById("difficulty_management_card_1");
+        let image_2 = document.getElementById("difficulty_management_card_2");
+        let image_3 = document.getElementById("difficulty_management_card_3");
+        let image_4 = document.getElementById("difficulty_management_card_4");
+
 
         let selected= document.getElementById("selection");
         let easy = document.getElementById("difficulty_easy");
         let hard = document.getElementById("difficulty_hard");
-
-        let easy_div=document.getElementById("cco_card_container_easy");
-        let hard_div=document.getElementById("cco_card_container_hard");
 
 
         let highlighted = null;
@@ -133,8 +128,10 @@
             easy.style.display='none';
             hard.style.display='inline';
 
-            easy_div.style.display='none';
-            hard_div.style.display='flex';
+            image_1.style.display='none';
+            image_2.style.display='none';
+            image_3.style.display='none';
+            image_4.style.display='none';
 
 
         }
@@ -143,8 +140,10 @@
             easy.style.display='inline';
             hard.style.display='none';
 
-            easy_div.style.display='flex';
-            hard_div.style.display='none';
+            image_1.style.display='flex';
+            image_2.style.display='flex';
+            image_3.style.display='flex';
+            image_4.style.display='flex';
         }
 
 
