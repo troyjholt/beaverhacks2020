@@ -70,10 +70,10 @@ app.get('/guess_the_word', function (req, res, next) {
 });
 
 /* This GET request handles loading the help page. */
-app.get('/help', function (req, res, next) {
+app.get('/help', function (request, response, next) {
     let context = {};
     context.form = 1;
-    res.render('help', context);
+    response.render('help', context);
 });
 
 /* This POST request handles checking the answer of the previous round and loading the next round.*/
@@ -96,7 +96,7 @@ app.post('/help', function (request, response, next) {
                 next(err);
                 return console.error('Error executing query', err.stack);
             }
-            res.render('help', context);
+            response.render('help', context);
         });
     });
 });
