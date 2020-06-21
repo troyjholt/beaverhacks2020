@@ -14,22 +14,13 @@ function category_cross_out_implementation(pool, app) {
 
     });
 
-    /* This POST request handles checking the answer of the category-cross-out game. */
+    /* This POST request handles checking the answer of the previous round and loading the next round.*/
     app.post('/category_cross_out', function (request, response, next) {
         let context = {};
         context.tutorial=0;
         context.score=request.body.score;
         context.game=request.body.game;
         context.game++;
-
-        console.log("Body Request: ")
-        console.log(request.body);
-        console.log();
-
-
-        console.log("Body Hide Status: ")
-        console.log(request.body.hide);
-        console.log();
 
         /* This code handles determining if images need to be hidden for the next round.
         *  Since POST send the data as a string, it converts the string to a boolean.*/
@@ -39,6 +30,7 @@ function category_cross_out_implementation(pool, app) {
                 context.hide=0;
             }
 
+            /* This code tabulates the score of the previous round and sets the required assets.*/
         if (request.body.selection==='null'){
             context.result = "Oops! You forgot to select an item. Click on the item that doesn't belong!";
             context.game--;
@@ -63,11 +55,12 @@ function category_cross_out_implementation(pool, app) {
 
     function renderCCO(request, response, next, context) {
 
+
+        /* This code connects to the database and retrieves 3 items from a category and 1 item from a different category.*/
         pool.connect((err, client, release) => {
             if (err) {
                 return console.error('Error acquiring client.', err.stack)
             }
-
 
             client.query('SELECT rownumber, name FROM (SELECT ROW_NUMBER() OVER (ORDER BY (SELECT 0)) as rownumber, name FROM (SELECT name FROM category ORDER BY random()) AS randomized) AS selection WHERE rownumber <= 2;', (err, result) => {
                 /* Skips to the 500 page is an error is returned.*/
@@ -87,36 +80,33 @@ function category_cross_out_implementation(pool, app) {
                         return console.error('Error executing query', err.stack);
                     }
 
+                    /* The table of items for the next round is stored in the context object.*/
                     context.tokens = result.rows;
                     for (let i = 0; i < 4; i++) {
 
+                        /* This sets the difficulty level based on the settings from the previous round.*/
                         if(context.hide===1){
                             context.tokens[i].hide=1;
                         }else{
                             context.tokens[i].hide=0;
                         }
 
+                        /* This tags each image with whether-or-not it has a match amongst the other image.*/
                         if (context.tokens[i].type === context.category_wrong) {
                             context.tokens[i].matched = 0;
                             context.solution = context.tokens[i].name;
                         } else {
                             context.tokens[i].matched = 1;
                         }
-
+                        /* Creates an id for each card's image.*/
                         context.tokens[i].id = "card_" + (i + 1);
                     }
-
-                    console.log("Context Object: ")
-                    console.log(context);
-                    console.log();
 
                     response.render('category_cross_out', context);
                 });
             });
         });
     }
-
-
 }
 
 

@@ -1,3 +1,4 @@
+/* Container for the header.*/
 .cco_header_container{
     display: flex;
     flex-direction: row;
@@ -5,6 +6,7 @@
     align-items: center;
 }
 
+/* Container for the title text.*/
 .cco_title{
     display: flex;
     justify-content: flex-start;
@@ -28,6 +30,7 @@
     margin: 20px;
 }
 
+/* Container for the difficulty selection buttons.*/
 #cco_difficulty_selection{
     display: flex;
     justify-content: center;
@@ -52,12 +55,13 @@
     cursor: pointer;
 }
 
+/* Container for each component of the difficulty selection button.*/
 .cco_difficulty_selection_component{
     margin-left: 10px;
     margin-right: 10px;
 }
 
-/* This CSS controls the button the turns the images on and off.*/
+/* Toggles the difficulty-level images on/off.*/
 #difficulty_easy{
     display: inline;
     flex-shrink: 1;
@@ -69,26 +73,13 @@
 }
 
 
-/* This section fills the card with empty space when the image is NOT displayed.*/
-#spacer_bottom{
-
-    display: none;
-}
-
-#spacer_top{
-
-    display: none;
-}
-/* Container for the card. It also requires the backdrop_for_variable_heights div to
-   account for potential varying heights amongst the cards. (Otherwise, they'll all
-   resize to be the same height.*/
-
+/* This container hols the cards.*/
 #cco_card_container{
     display: flex;
     flex-direction: row;
 }
 
-
+/* This container ensures that each card is the same height, regardless of contents.*/
 .cco_backdrop_for_variable_heights{
     display: flex;
     flex-grow: 1;
@@ -108,6 +99,8 @@
     margin: 20px;
     text-align: center;
 }
+
+/* Grows elements in the card to the size of the card.*/
 .cco_single_card div{
     display: flex;
     flex-direction: column;
@@ -126,22 +119,24 @@
     font-weight: 600;
 }
 
-
+/* Settings for the hint image.*/
 .cco_hint_image{
     display: flex;
 }
 
+/* This spacer fills the card with empty space when the image is NOT being displayed (hard mode).*/
 .cco_hint_spacer{
     display: none;
 }
 
-
+/* This container holds the score tracker and displays game statistics.*/
 .cco_tracker_container{
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+/* Contains the score tracker.*/
 .cco_score_tracker{
     display: flex;
     justify-content: center;
@@ -153,6 +148,7 @@
     border-radius: 4px;
 }
 
+/* Contains the individual text elements of the score tracker.*/
 .cco_score_tracker span {
     font-family: "Nunito", sans-serif;
     font-size: 18px;
@@ -162,7 +158,6 @@
 
 /* material_button is adapted from the code by (c) Bence Szabó which
 uses the MIT license and can be found here: https://github.com/finnhvman/matter */
-
 .cco_button{
     display: flex;
     justify-content: flex-end;

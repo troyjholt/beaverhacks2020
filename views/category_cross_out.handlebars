@@ -1,3 +1,4 @@
+<!-- Audio -->
 {{#if bing}}
     <audio autoplay>
         <source src="sounds/correct.wav" type="audio/wav">
@@ -10,68 +11,71 @@
     </audio>
 {{/if}}
 
-<div class="cco_header_container">
 
+<!-- This section handles the header of the game, which includes the title and difficulty button. -->
+<div class="cco_header_container">
     <div class="cco_title">
         <span>Category-Cross-Out</span>
     </div>
-
     <div id="cco_difficulty_selection">
         <div class="cco_difficulty_selection_component">
             <span id="difficulty_setting">{{#if hide}}Hard{{else}}Easy{{/if}}</span></div>
-        <div class="cco_difficulty_selection_component"><img src="word_hint_images/pictures_on.png" id="difficulty_easy" {{#if hide}}style="display: none"{{/if}}>
-        <img src="word_hint_images/pictures_off.png" id="difficulty_hard" {{#if hide}}style="display: flex"{{/if}}></div>
+        <div class="cco_difficulty_selection_component">
+            <img src="word_hint_images/pictures_on.png" id="difficulty_easy"{{#if hide}}style="display: none"{{/if}}>
+            <img src="word_hint_images/pictures_off.png" id="difficulty_hard" {{#if hide}}style="display: flex"{{/if}}>
+        </div>
     </div>
 </div>
 
-
+<!-- This section handles the four game cards. -->
 <div id="cco_card_container">
-{{#each tokens}}
-    <div class="cco_backdrop_for_variable_heights">
-    <div class="cco_single_card" id="{{this.id}}">
-
-            <div id="{{this.name}}">
-        <img src="word_hint_images/spacer.png" class="cco_hint_spacer" id="spacer1_{{this.id}}" {{#if this.hide}}style="display: flex"{{/if}}>
-        <img src="word_hint_images/{{this.url}}" class="cco_hint_image" id="img_{{this.id}}" {{#if this.hide}}style="display: none"{{/if}}>
-
-
-        <h3>{{this.name}}</h3>
-        <img src="word_hint_images/spacer.png" class="cco_hint_spacer" id="spacer2_{{this.id}}" {{#if this.hide}}style="display: flex"{{/if}}>
+    {{#each tokens}}
+        <div class="cco_backdrop_for_variable_heights">
+            <div class="cco_single_card" id="{{this.id}}">
+                <div id="{{this.name}}">
+                    <img src="word_hint_images/spacer.png" class="cco_hint_spacer" id="spacer1_{{this.id}}"
+                         {{#if this.hide}}style="display: flex"{{/if}}>
+                    <img src="word_hint_images/{{this.url}}" class="cco_hint_image" id="img_{{this.id}}"
+                         {{#if this.hide}}style="display: none"{{/if}}>
+                    <h3>{{this.name}}</h3>
+                    <img src="word_hint_images/spacer.png" class="cco_hint_spacer" id="spacer2_{{this.id}}"
+                         {{#if this.hide}}style="display: flex"{{/if}}>
+                </div>
             </div>
-
-    </div>
-
-</div>
-{{/each}}
+        </div>
+    {{/each}}
 </div>
 
 
-
+<!-- This hidden form submits data via POST request; this data is used to score the round and load the next round. -->
 <form method="POST" id="theForm">
     <input type="hidden" name="answer" value="{{solution}}" id="answer">
     <input type="hidden" name="selection" value="null" id="selection">
     <input type="hidden" name="score" value="{{score}}" id="score">
     <input type="hidden" name="game" value="{{game}}" id="game">
     <input type="hidden" name="hide" value="{{hide}}" id="hide_images">
-
 </form>
 
+<!-- This container manages the score-tracker. -->
 <div class="cco_tracker_container">
-<div class="cco_score_tracker">
-    {{#if tutorial}}
-        <span>One of these words doesn't belong in the same category as the others. Select
+    <div class="cco_score_tracker">
+        {{#if tutorial}}
+            <span>One of these words doesn't belong in the same category as the others. Select
               the word that doesn't belong.</span>
-    {{else}}
-    <span>{{result}}</span>
-    {{/if}}<br>
-    <span>Your current score is {{score}}/{{game}}.</span>
+        {{else}}
+            <span>{{result}}</span>
+        {{/if}}<br>
+        <span>Your current score is {{score}}/{{game}}.</span>
+    </div>
+
+    <!-- This container manages the submit button. -->
+    <div class="cco_button">
+        <button type="submit" class="material_button" form="theForm" value="Submit">CHECK MY ANSWER</button>
+    </div>
 </div>
 
-<div class="cco_button">
-    <button type="submit" class="material_button" form="theForm" value="Submit">CHECK MY ANSWER</button>
-</div>
-</div>
 
+<!-- This script handles any actions that occur during a single round, such as clicking on a card or changing the difficulty setting. -->
 <script>
     document.addEventListener('DOMContentLoaded', cardClicks);
 
@@ -95,48 +99,47 @@
         let spacer2_3 = document.getElementById("spacer2_card_3");
         let spacer1_4 = document.getElementById("spacer1_card_4");
         let spacer2_4 = document.getElementById("spacer2_card_4");
-        let easy= document.getElementById("difficulty_easy");
-        let hard= document.getElementById("difficulty_hard");
 
+        let easy = document.getElementById("difficulty_easy");
+        let hard = document.getElementById("difficulty_hard");
 
-        let selected= document.getElementById("selection");
-        let difficulty_button= document.getElementById("cco_difficulty_selection");
-        let visibility= document.getElementById("hide_images");
-
-        let isHard={{hide}};
-
-
+        let selected = document.getElementById("selection");
+        let difficulty_button = document.getElementById("cco_difficulty_selection");
+        let visibility = document.getElementById("hide_images");
+        let isHard ={{hide}};
         let highlighted = null;
 
+        <!-- This onClick listeners activate when a card is clicked on. -->
         card_1.addEventListener('click', event => {
 
             if (highlighted) {
                 deHighlight(highlighted);
             }
             highlight(card_1);
-        })
+        });
 
         card_2.addEventListener('click', event => {
             if (highlighted) {
                 deHighlight(highlighted);
             }
             highlight(card_2);
-        })
+        });
 
         card_3.addEventListener('click', event => {
             if (highlighted) {
                 deHighlight(highlighted);
             }
             highlight(card_3);
-        })
+        });
 
         card_4.addEventListener('click', event => {
             if (highlighted) {
                 deHighlight(highlighted);
             }
             highlight(card_4);
-        })
+        });
 
+        <!-- This code handles highlighting/un-highlighting the selected card. -->
         function highlight(card) {
             highlighted = card;
             card.style.boxShadow = "0px 0px 17px 3px rgba(0,163,250,1)";
@@ -147,70 +150,71 @@
             card.style.boxShadow = "0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05)";
         }
 
+        <!-- This code handles changing the difficulty setting.  -->
         difficulty_button.addEventListener('click', event => {
-
-            if(isHard===0) {
+            if (isHard === 0) {
                 hidePictures();
                 isHard = 1;
-            }else{
+            } else {
                 showPictures();
-                isHard=0;
+                isHard = 0;
             }
-        })
+        });
 
-
-        function hidePictures(){
+        <!-- These sections hide/reveal the displayed pictures and replace them with spacers. -->
+        function hidePictures() {
 
             <!-- Toggles the difficulty button. -->
-            easy.style.display='none';
-            hard.style.display='inline';
+            easy.style.display = 'none';
+            hard.style.display = 'inline';
 
             <!-- Hides the images. -->
-            image_1.style.display='none';
-            image_2.style.display='none';
-            image_3.style.display='none';
-            image_4.style.display='none';
+            image_1.style.display = 'none';
+            image_2.style.display = 'none';
+            image_3.style.display = 'none';
+            image_4.style.display = 'none';
 
             <!-- Reveals the whitespace. -->
-            spacer1_1.style.display='flex';
-            spacer2_1.style.display='flex';
-            spacer1_2.style.display='flex';
-            spacer2_2.style.display='flex';
-            spacer1_3.style.display='flex';
-            spacer2_3.style.display='flex';
-            spacer1_4.style.display='flex';
-            spacer2_4.style.display='flex';
+            spacer1_1.style.display = 'flex';
+            spacer2_1.style.display = 'flex';
+            spacer1_2.style.display = 'flex';
+            spacer2_2.style.display = 'flex';
+            spacer1_3.style.display = 'flex';
+            spacer2_3.style.display = 'flex';
+            spacer1_4.style.display = 'flex';
+            spacer2_4.style.display = 'flex';
 
-            document.getElementById("difficulty_setting").textContent="Hard";
+            <!-- Sets difficulty text. -->
+            document.getElementById("difficulty_setting").textContent = "Hard";
 
             <!-- Sets whether or not the cards are hidden for the next round. -->
             visibility.value = 1;
         }
 
-        function showPictures(){
-
+        function showPictures() {
 
             <!-- Toggles the difficulty button. -->
-            easy.style.display='flex';
-            hard.style.display='none';
+            easy.style.display = 'flex';
+            hard.style.display = 'none';
 
             <!-- Reveals the images. -->
-            image_1.style.display='flex';
-            image_2.style.display='flex';
-            image_3.style.display='flex';
-            image_4.style.display='flex';
+            image_1.style.display = 'flex';
+            image_2.style.display = 'flex';
+            image_3.style.display = 'flex';
+            image_4.style.display = 'flex';
 
             <!-- Hides the whitespace. -->
-            spacer1_1.style.display='none';
-            spacer2_1.style.display='none';
-            spacer1_2.style.display='none';
-            spacer2_2.style.display='none';
-            spacer1_3.style.display='none';
-            spacer2_3.style.display='none';
-            spacer1_4.style.display='none';
-            spacer2_4.style.display='none';
+            spacer1_1.style.display = 'none';
+            spacer2_1.style.display = 'none';
+            spacer1_2.style.display = 'none';
+            spacer2_2.style.display = 'none';
+            spacer1_3.style.display = 'none';
+            spacer2_3.style.display = 'none';
+            spacer1_4.style.display = 'none';
+            spacer2_4.style.display = 'none';
 
-            document.getElementById("difficulty_setting").textContent="Easy";
+            <!-- Sets difficulty text. -->
+            document.getElementById("difficulty_setting").textContent = "Easy";
 
             <!-- Sets whether or not the cards are hidden for the next round. -->
             visibility.value = 0;
