@@ -1,16 +1,19 @@
-CREATE TABLE words(
-                     word_id SERIAL PRIMARY KEY UNIQUE NOT NULL,
-                     name VARCHAR(255) NOT NULL,
-                     type INT NOT NULL,
-                     URL VARCHAR(255),
-                     difficulty VARCHAR(255) NOT NULL
-		     FOREIGN KEY (type) REFERENCES category(category_id) ON DELETE CASCADE
-);
-
 CREATE TABLE category(
                      category_id SERIAL PRIMARY KEY UNIQUE NOT NULL,
-                     name VARCHAR(255) NOT NULL,
+                     name VARCHAR(255) NOT NULL
 );
+
+CREATE TABLE words(
+                      word_id SERIAL PRIMARY KEY UNIQUE NOT NULL,
+                      type INT NOT NULL,
+                      name VARCHAR(255) NOT NULL,
+                      URL VARCHAR(255),
+                      difficulty VARCHAR(255) NOT NULL,
+                      FOREIGN KEY (type) REFERENCES category(category_id) ON DELETE CASCADE
+);
+
+
+
 
 INSERT INTO category (name) VALUES ('animal');
 INSERT INTO category (name) VALUES ('fruit');

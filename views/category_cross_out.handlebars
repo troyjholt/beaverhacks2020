@@ -1,20 +1,69 @@
-category_cross_out plays here.
-<p><br></p>
+
 <span>The two categories are: {{category_correct}} and {{category_wrong}}.</span>
 <p><br></p>
 
-<ol>
-    {{#each tokens}}
-        <li>
-        <p><img src="{{this.url}}"><br>
-            {{this.name}} (
 
-            {{#if this.matched}}
-                CORRECT
-            {{else}}
-                INCORRECT
-            {{/if}} WORD)
-        </li>
+<div class="cco_card_container">
+
+    {{#each tokens}}
+        <div class="cco_backdrop_for_variable_heights">
+            <div class="cco_single_card" id="{{this.id}}">
+                <img src="{{this.url}}" class="cco_hint_image">
+                <h3>{{this.name}}</h3>
+            </div>
+        </div>
     {{/each}}
-</ol>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', cardClick);
+
+    function cardClick() {
+
+        let card_1 = document.getElementById("card_1");
+        let card_2 = document.getElementById("card_2");
+        let card_3 = document.getElementById("card_3");
+        let card_4 = document.getElementById("card_4");
+        let highlighted = null;
+
+        card_1.addEventListener('click', event => {
+
+            if (highlighted) {
+                deHighlight(highlighted);
+            }
+            highlight(card_1);
+        })
+
+        card_2.addEventListener('click', event => {
+            if (highlighted) {
+                deHighlight(highlighted);
+            }
+            highlight(card_2);
+        })
+
+        card_3.addEventListener('click', event => {
+            if (highlighted) {
+                deHighlight(highlighted);
+            }
+            highlight(card_3);
+        })
+
+        card_4.addEventListener('click', event => {
+            if (highlighted) {
+                deHighlight(highlighted);
+            }
+            highlight(card_4);
+        })
+
+        function highlight(card) {
+            highlighted = card;
+            card.style.boxShadow = "0px 0px 17px 3px rgba(0,163,250,1)";
+        }
+
+        function deHighlight(card) {
+            card.style.boxShadow = "0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05)";
+        }
+    }
+
+</script>
+
