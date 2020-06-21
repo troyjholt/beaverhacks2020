@@ -29,13 +29,13 @@ function category_cross_out_implementation(pool, app) {
         console.log(request.body.hide);
         console.log();
 
-        /* This code handles determining if images need to be hidden for the next round.*/
-        context.hide=request.body.hide;
-
-
-        console.log("Context Hide Status: ")
-        console.log(context.hide);
-        console.log();
+        /* This code handles determining if images need to be hidden for the next round.
+        *  Since POST send the data as a string, it converts the string to a boolean.*/
+            if (request.body.hide==='1'){
+                context.hide=1;
+            }else{
+                context.hide=0;
+            }
 
         if (request.body.selection==='null'){
             context.result = "Oops! You forgot to select an item. Click on the item that doesn't belong!";
@@ -82,7 +82,7 @@ function category_cross_out_implementation(pool, app) {
                     context.tokens = result.rows;
                     for (let i = 0; i < 4; i++) {
 
-                        if(context.hide==='1'){
+                        if(context.hide===1){
                             context.tokens[i].hide=1;
                         }else{
                             context.tokens[i].hide=0;
