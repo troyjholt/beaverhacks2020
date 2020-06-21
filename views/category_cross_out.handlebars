@@ -62,10 +62,16 @@
         let card_2 = document.getElementById("card_2");
         let card_3 = document.getElementById("card_3");
         let card_4 = document.getElementById("card_4");
+
+
         let selected= document.getElementById("selection");
         let easy = document.getElementById("difficulty_easy");
         let hard = document.getElementById("difficulty_hard");
-        let images_to_change = document.getElementsByTagName("img");
+
+        let pictures_to_change= document.querySelectorAll('.cco_hint_images');
+
+
+
         let highlighted = null;
         let pictures=true;
 
@@ -123,9 +129,9 @@
             hard.style.display='inline';
 
 
-            for (x in images_to_change) {
-                x.display='none';
-            }
+            pictures_to_change.forEach(element => {
+                element.display = 'none';
+            });
 
         }
 
@@ -133,10 +139,9 @@
             easy.style.display='inline';
             hard.style.display='none';
 
-            pictures_to_change[0].display='inline';
-            pictures_to_change[1].display='inline';
-            pictures_to_change[2].display='inline';
-            pictures_to_change[3].display='inline';
+            pictures_to_change.forEach(element => {
+                element.display = 'inline';
+            });
 
         }
 
