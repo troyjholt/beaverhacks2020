@@ -53,19 +53,19 @@ div.nav_content {
 div.title {
     width: 50%;
     height: 100%;
-    padding: 10px;
+    padding: 20px;
 }
 
 div.title span {
     font-weight: 600;
-    font-size: 2em;
+    font-size: 2.5em;
 }
 
 
 /* Formatting for the nav. bar's menu. */
 div.menu_buttons {
     height: 100%;
-    width: 50%;
+    width: 30%;
 }
 
 div.menu_buttons > ul {
