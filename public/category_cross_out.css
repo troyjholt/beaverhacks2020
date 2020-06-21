@@ -1,5 +1,6 @@
 .cco_header_container{
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
@@ -29,7 +30,6 @@
 
 .cco_difficulty_selection{
     display: flex;
-    flex-grow: 1;
     justify-content: center;
     align-items: center;
     border: solid;
@@ -45,7 +45,7 @@
     box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
     font-family: "Arial", sans-serif;
     font-size: 30px;
-    font-weight: 400;
+    font-weight: 600;
     overflow: hidden;
     padding: 10px;
     margin: 20px;
