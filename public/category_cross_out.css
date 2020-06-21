@@ -51,12 +51,15 @@ img.cco_hint_image{
 .cco_tracker_container{
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .cco_score_tracker{
     width: 50%;
     text-align: center;
+    margin: 20px;
     box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
+    border-radius: 4px;
 }
 
 /* material_button is adapted from the code by (c) Bence Szabó which
