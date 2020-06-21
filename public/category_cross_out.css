@@ -95,12 +95,12 @@
 }
 
 /* Whitespace created when images are toggled off.*/
-.cco_card_spacer1{
+#cco_card_spacer1{
     display: none;
     width: 200px;
     height: 100px;
 }
-.cco_card_spacer2{
+#cco_card_spacer2{
     display: none;
     width: 200px;
     height: 100px;
