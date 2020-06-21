@@ -116,11 +116,16 @@
         function hideEasy(){
             easy.style.display='none';
             hard.style.display='inline';
-            card_1.childNodes[0].style.display='none';
-            card_2.childNodes[1].style.display='none';
-            card_3.childNodes[2].style.display='none';
-            card_4.childNodes[3].style.display='none';
 
+            let image_1 = card_1.firstElementChild;
+            image_1.display='none';
+
+            let image_2 = card_2firstElementChild;
+            image_2.display='none';
+            let image_3 = card_3.firstElementChild;
+            image_3.display='none';
+            let image_4 = card_4.firstElementChild;
+            image_4.display='none';
         }
 
         function hideHard(){
