@@ -67,9 +67,9 @@ img.cco_hint_image{
 
 .cco_score_tracker span {
     font-family: "Nunito", sans-serif;
-    font-size: 30px;
+    font-size: 16px;
     font-weight: 600;
-    margin: 20px;
+    margin: 30px;
 }
 
 /* material_button is adapted from the code by (c) Bence Szabó which
