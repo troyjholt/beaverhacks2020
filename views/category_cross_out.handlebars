@@ -116,14 +116,20 @@
         function hideEasy(){
             easy.style.display='none';
             hard.style.display='inline';
-            document.getElementById("cco_hint_image").style.display='none';
+            card_1.childNodes[0].style.display='none';
+            card_2.childNodes[1].style.display='none';
+            card_3.childNodes[2].style.display='none';
+            card_4.childNodes[3].style.display='none';
+
         }
 
         function hideHard(){
             easy.style.display='inline';
-            hard.style.display='block';
-            document.getElementById("cco_hint_image").style.display='inline';
-
+            hard.style.display='none';
+            card_1.childNodes[0].style.display='inline';
+            card_2.childNodes[1].style.display='inline';
+            card_3.childNodes[2].style.display='inline';
+            card_4.childNodes[3].style.display='inline';
         }
 
 
