@@ -38,7 +38,7 @@
         let card_2 = document.getElementById("card_2");
         let card_3 = document.getElementById("card_3");
         let card_4 = document.getElementById("card_4");
-
+        let select = document.getElementById("selected_card");
 
         let highlighted = null;
 
@@ -74,8 +74,6 @@
         function highlight(card) {
             highlighted = card;
             card.style.boxShadow = "0px 0px 17px 3px rgba(0,163,250,1)";
-
-            let select = document.getElementById("selected_card");
             select.nodeValue = "" + card.id;
         }
 
