@@ -117,15 +117,11 @@
             easy.style.display='none';
             hard.style.display='inline';
 
-            let image_1 = card_1.firstElementChild;
-            image_1.display='none';
-
-            let image_2 = card_2firstElementChild;
-            image_2.display='none';
-            let image_3 = card_3.firstElementChild;
-            image_3.display='none';
-            let image_4 = card_4.firstElementChild;
-            image_4.display='none';
+            let images = getElementsByClassName("cco_hint_image");
+            images[0].display='none';
+            images[1].display='none';
+            images[2].display='none';
+            images[3].display='none';
         }
 
         function hideHard(){
