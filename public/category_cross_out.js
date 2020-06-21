@@ -5,6 +5,7 @@ function category_cross_out_implementation(pool, app) {
         let context = {};
         context.score = 0;
         context.game = 0;
+        context.hide='false';
 
         renderCCO(request, response, next, context);
 
@@ -23,7 +24,7 @@ function category_cross_out_implementation(pool, app) {
         if (request.body.answer === request.body.selection) {
             context.score++;
             context.result = "Your previous answer was correct!";
-        } else if(request.body.selection===null{
+        } else if(request.body.selection===null){
             context.result = "Oops! You forgot to select an item.";
             context.game--;
         }else{
