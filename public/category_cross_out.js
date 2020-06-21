@@ -5,6 +5,7 @@ function category_cross_out_implementation(pool, app) {
         let context = {};
         context.score = 0;
         context.game = 0;
+        context.tutorial=1;
         context.hide='false';
 
         renderCCO(request, response, next, context);
@@ -14,6 +15,7 @@ function category_cross_out_implementation(pool, app) {
     /* This POST request handles checking the answer of the category-cross-out game. */
     app.post('/category_cross_out', function (request, response, next) {
         let context = {};
+        context.tutorial=0;
         context.score=request.body.score;
         context.game=request.body.game;
         context.game++;

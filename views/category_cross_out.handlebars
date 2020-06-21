@@ -43,11 +43,12 @@
 
 <div class="cco_tracker_container">
 <div class="cco_score_tracker">
-    {{#if game}}<span>{{result}}.
-    {{else}}
+    {{#if tutorial}}
         <span>One of these words doesn't belong in the same category as the others. Select
               the word that doesn't belong.</span>
-    {{/if}}</span><br>
+    {{else}}
+    <span>{{result}}.</span>
+    {{/if}}<br>
     <span>Your current score is {{score}}/{{game}}.</span>
 </div>
 
