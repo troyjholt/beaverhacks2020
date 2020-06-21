@@ -42,33 +42,31 @@
     </div>
 </div>
 
-{{#if form}}
-    <div style="display: none;" id="contact">
-        <div class="cco_card_container help">
-            <div class="cco_backdrop_for_variable_heights help">
-                <div class="cco_single_card help">
-                    <span class="material-icons help" onclick="resetResources(event, 'contact')">arrow_back</span>
-                    <h3>CONTACT US</h3>
+
+<div style="display: none;" id="contact">
+    <div class="cco_card_container help">
+        <div class="cco_backdrop_for_variable_heights help">
+            <div class="cco_single_card help">
+                <span class="material-icons help" onclick="resetResources(event, 'contact')">arrow_back</span>
+                <h3>CONTACT US</h3>
+                {{#if form}}
                     <p>Got questions? Shoot us an email!</p>
-                    <div>
-                        <form method="post" action="">
-                            <input name="sender" placeholder="Name..."><br>
+                <div>
+                    <form method="post" action="">
+                        <input name="sender" placeholder="Name..."><br>
+                        <input name="senderEmail" placeholder="Email..."><br>
 
-                            <input name="senderEmail" placeholder="Email..."><br>
-
-                            <textarea rows="5" cols="20" name="message"
-                                      placeholder="What's on your mind?"></textarea><br>
-
-                            <input type="submit" name="submit" id="submit">
-                        </form>
-                    </div>
-                </div>
+                        <textarea rows="5" cols="20" name="message"
+                                  placeholder="What's on your mind?"></textarea><br>
+                        <input type="submit" name="submit" id="submit">
+                    </form>
+                {{else}} <span>Thank you for your feedback!</span>{{/if}}
+            </div>
             </div>
         </div>
     </div>
-{{else}}
-    <span>Thank you for your feedback!</span>
-{{/if}}
+</div>
+
 
 <div style="display: none;" id="about">
     <div class="cco_card_container help">
