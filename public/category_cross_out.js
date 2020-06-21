@@ -20,6 +20,8 @@ function category_cross_out_implementation(pool, app) {
         context.game=request.body.game;
         context.game++;
 
+        console.log(request.body);
+
         /* This code handles determining if images need to be hidden for the next round.*/
         context.hide=request.body.hide;
 
