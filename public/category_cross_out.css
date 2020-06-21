@@ -52,6 +52,11 @@
     cursor: pointer;
 }
 
+.cco_difficulty_selection_component{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
 /* This CSS controls the button the turns the images on and off.*/
 #difficulty_easy{
     display: inline;
