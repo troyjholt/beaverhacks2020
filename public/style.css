@@ -18,6 +18,12 @@ html, body {
     font-weight: 400;
 }
 
+#title_link{
+    text-decoration: none;
+    color:#E3F2FD;
+    background-color: #1A237E;
+
+}
 /* Container for the elements in the navigation bar. Stretches bar across the page and provides background.*/
 div.nav_container {
     top: 0;
@@ -29,7 +35,6 @@ div.nav_container {
     height: fit-content;
     padding: 0px;
     margin: 0px;
-
     background-color: #1A237E;
     color: #E3F2FD;
 
