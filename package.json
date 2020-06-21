@@ -1,7 +1,7 @@
 {
-  "name": "UNTITLED",
+  "name": "thinQ",
   "version": "1.0.0",
-  "description": "UNTITLED",
+  "description": "thingQ",
   "main": "script.js",
   "scripts": {
     "start": "node script.js"
