@@ -17,12 +17,15 @@
     <div class="cco_backdrop_for_variable_heights">
     <div class="cco_single_card" id="{{this.id}}">
 
-            <div class="card_image" id="{{this.name}}">
+            <div id="{{this.name}}">
+        <img src="word_hint_images/spacer.png" class="cco_hint_spacer" id="spacer1_{{this.id}}" {{#if this.hide}}style="display: flex"{{/if}}>
         <img src="word_hint_images/{{this.url}}" class="cco_hint_image" id="img_{{this.id}}" {{#if this.hide}}style="display: none"{{/if}}>
 
-            </div>
 
         <h3>{{this.name}}</h3>
+        <img src="word_hint_images/spacer.png" class="cco_hint_spacer" id="spacer2_{{this.id}}" {{#if this.hide}}style="display: flex"{{/if}}>
+            </div>
+
     </div>
 
 </div>
@@ -70,6 +73,15 @@
         let image_2 = document.getElementById("img_card_2");
         let image_3 = document.getElementById("img_card_3");
         let image_4 = document.getElementById("img_card_4");
+
+        let spacer1_1 = document.getElementById("spacer1_card_1");
+        let spacer2_1 = document.getElementById("spacer2_card_1");
+        let spacer1_2 = document.getElementById("spacer1_card_2");
+        let spacer2_2 = document.getElementById("spacer2_card_2");
+        let spacer1_3 = document.getElementById("spacer1_card_3");
+        let spacer2_3 = document.getElementById("spacer2_card_3");
+        let spacer1_4 = document.getElementById("spacer1_card_4");
+        let spacer2_4 = document.getElementById("spacer2_card_4");
 
 
 
@@ -145,8 +157,14 @@
             image_4.style.display='none';
 
             <!-- Reveals the whitespace. -->
-            spacer1.display='inline';
-            spacer2.display='inline';
+            spacer1_1.display='flex';
+            spacer2_1.display='flex';
+            spacer1_2.display='flex';
+            spacer2_2.display='flex';
+            spacer1_3.display='flex';
+            spacer2_3.display='flex';
+            spacer1_4.display='flex';
+            spacer2_4.display='flex';
 
 
             <!-- Sets whether or not the cards are hidden for the next round. -->
@@ -167,8 +185,15 @@
             image_4.style.display='flex';
 
             <!-- Hides the whitespace. -->
-            spacer1.display='none';
-            spacer2.display='none';
+            spacer1_1.display='none';
+            spacer2_1.display='none';
+            spacer1_2.display='none';
+            spacer2_2.display='none';
+            spacer1_3.display='none';
+            spacer2_3.display='none';
+            spacer1_4.display='none';
+            spacer2_4.display='none';
+
 
             <!-- Sets whether or not the cards are hidden for the next round. -->
             visibility.value = 0;
