@@ -46,21 +46,21 @@
     font-size: 30px;
     font-weight: 600;
     overflow: hidden;
-    outline: none;
     padding: 10px;
     margin: 20px;
-
-
+    cursor: pointer;
 }
 
 
 /* This CSS controls the button the turns the images on and off.*/
 #difficulty_easy{
     display: inline;
+    flex-shrink: 1;
 }
 
 #difficulty_hard{
     display: none;
+    flex-shrink: 1;
 }
 
 

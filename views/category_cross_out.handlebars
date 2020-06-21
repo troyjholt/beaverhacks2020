@@ -5,7 +5,7 @@
     </div>
 
     <div class="cco_difficulty_settings">
-
+        <span id="difficulty_setting">EASY</span>
         <img src="word_hint_images/pictures_on.jpg" id="difficulty_easy" {{#if hide}}style="display: none"{{/if}}>
         <img src="word_hint_images/pictures_off.jpg" id="difficulty_hard" {{#if hide}}style="display: flex"{{/if}}>
     </div>
@@ -82,8 +82,6 @@
         let spacer2_3 = document.getElementById("spacer2_card_3");
         let spacer1_4 = document.getElementById("spacer1_card_4");
         let spacer2_4 = document.getElementById("spacer2_card_4");
-
-
 
         let selected= document.getElementById("selection");
         let easy = document.getElementById("difficulty_easy");
@@ -164,6 +162,7 @@
             spacer1_4.style.display='flex';
             spacer2_4.style.display='flex';
 
+            document.getElementById("difficulty_setting").textContent="HARD";
 
             <!-- Sets whether or not the cards are hidden for the next round. -->
             visibility.value = 1;
@@ -192,6 +191,7 @@
             spacer1_4.style.display='none';
             spacer2_4.style.display='none';
 
+            document.getElementById("difficulty_setting").textContent="EASY";
 
             <!-- Sets whether or not the cards are hidden for the next round. -->
             visibility.value = 0;
