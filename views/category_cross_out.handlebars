@@ -18,12 +18,13 @@
     <div class="cco_single_card" id="{{this.id}}">
 
             <div id="{{this.name}}">
-
+        <img src="spacer.png" {{#if this.hide}}style="display: flex"{{/if}} id="spacer_1">
         <img src="word_hint_images/{{this.url}}" class="cco_hint_image" id="img_{{this.id}}" {{#if this.hide}}style="display: none"{{/if}}>
 
             </div>
 
         <h3>{{this.name}}</h3>
+        <img src="spacer.png" {{#if this.hide}}style="display: flex"{{/if}} id="spacer_1">
     </div>
 
 </div>
@@ -142,6 +143,11 @@
             image_3.style.display='none';
             image_4.style.display='none';
 
+            <!-- Reveals the whitespace. -->
+            document.getElementById("spacer_1").display='flex';
+            document.getElementById("spacer_2").display='flex';
+
+
             <!-- Sets whether or not the cards are hidden for the next round. -->
             visibility.value = 1;
         }
@@ -153,11 +159,15 @@
             easy.style.display='flex';
             hard.style.display='none';
 
-            <!-- Hides the images. -->
+            <!-- Reveals the images. -->
             image_1.style.display='flex';
             image_2.style.display='flex';
             image_3.style.display='flex';
             image_4.style.display='flex';
+
+            <!-- Hides the whitespace. -->
+            document.getElementById("spacer_1").display='none';
+            document.getElementById("spacer_2").display='none';
 
             <!-- Sets whether or not the cards are hidden for the next round. -->
             visibility.value = 0;
