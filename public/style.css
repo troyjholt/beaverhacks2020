@@ -300,8 +300,11 @@ button.alphabet {
     display: inline-block;
 }
 
-.cco_card_container.help{
-    display: flex; flex-direction: rows; justify-content: center; align-items: center;
+.help{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 #status{
