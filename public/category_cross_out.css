@@ -39,8 +39,13 @@
    account for potential varying heights amongst the cards. (Otherwise, they'll all
    resize to be the same height.*/
 
-.cco_card_container{
+#cco_card_container_easy{
     display: flex;
+    flex-direction: row;
+}
+
+#cco_card_container_hard{
+    display: none;
     flex-direction: row;
 }
 

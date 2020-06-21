@@ -12,22 +12,27 @@
 </div>
 
 
-<div class="cco_card_container">
-
+<div id="cco_card_container_easy">
 {{#each tokens}}
     <div class="cco_backdrop_for_variable_heights">
     <div class="cco_single_card" id="{{this.id}}">
 
         <img src="word_hint_images/{{this.url}}" class="cco_hint_image" id="{{this.name}}">
-
         <h3>{{this.name}}</h3>
-
-</div>
+    </div>
 </div>
 {{/each}}
-
 </div>
 
+<div id="cco_card_container_hard">
+    {{#each tokens}}
+        <div class="cco_backdrop_for_variable_heights">
+            <div class="cco_single_card" id="{{this.id}}">
+                <h3>{{this.name}}</h3>
+            </div>
+        </div>
+    {{/each}}
+</div>
 
 
 <form method="POST" id="theForm">
@@ -68,8 +73,8 @@
         let easy = document.getElementById("difficulty_easy");
         let hard = document.getElementById("difficulty_hard");
 
-        let pictures_to_change= document.querySelectorAll('.cco_hint_images');
-
+        let easy_div=document.getElementById("cco_card_container_easy");
+        let hard_div=document.getElementById("cco_card_container_hard");
 
 
         let highlighted = null;
@@ -128,10 +133,9 @@
             easy.style.display='none';
             hard.style.display='inline';
 
+            easy_div.style.display='none';
+            hard_div.style.display='flex';
 
-            pictures_to_change.forEach(element => {
-                element.display = 'none';
-            });
 
         }
 
@@ -139,10 +143,8 @@
             easy.style.display='inline';
             hard.style.display='none';
 
-            pictures_to_change.forEach(element => {
-                element.display = 'inline';
-            });
-
+            easy_div.style.display='flex';
+            hard_div.style.display='none';
         }
 
 
