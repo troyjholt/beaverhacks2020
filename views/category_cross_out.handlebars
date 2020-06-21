@@ -21,7 +21,7 @@
 
 {{#each tokens}}
     <input type="hidden" name="card_id" value="{{this.id}}">
-    <input type="hidden" id="select_{{this.id}}" name="selection_status" value="False">
+    <input type="hidden" id="select_{{this.id}}" name="selection_status" value="select_{{this.id}}">
 
     {{#if this.matched}}
         <input type="hidden" name="correct" value="Incorrect">
