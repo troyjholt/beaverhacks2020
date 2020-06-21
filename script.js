@@ -65,22 +65,37 @@ app.get('/shape_match', function (req, res, next) {
 /* This GET request handles loading the guess-the-word page. */
 app.get('/guess_the_word', function (req, res, next) {
     let context = {};
+    context.form = 1;
+
     res.render('guess_the_word', context);
 });
 
 
-/* This GET request handles loading the contact page. */
-app.get('/contact', function (req, res, next) {
+/* This POST request handles checking the answer of the previous round and loading the next round.*/
+app.post('/help', function (request, response, next) {
     let context = {};
-    res.render('contact', context);
+    context.form = 0;
+    context.sender = request.body.sender;
+    context.senderEmail = request.body.senderEmail;
+    context.message = request.body.message;
+
+    /* This code connects to the database and retrieves 3 items from a category and 1 item from a different category.*/
+    pool.connect((err, client, release) => {
+        if (err) {
+            return console.error('Error acquiring client.', err.stack)
+        }
+
+        client.query('INSERT INTO contact (name, email, comments) VALUES ($1, $2, $3);', [context.sender, context.senderEmail, context.message], (err, result) => {
+            /* Skips to the 500 page is an error is returned.*/
+            if (err) {
+                next(err);
+                return console.error('Error executing query', err.stack);
+            }
+            res.render('help', context);
+        });
+    });
 });
 
-
-/* This GET request handles loading the contact page. */
-app.get('/contact', function (req, res, next) {
-    let context = {};
-    res.render('contact', context);
-});
 
 /* This GET request handles loading the help page. */
 app.get('/help', function (req, res, next) {

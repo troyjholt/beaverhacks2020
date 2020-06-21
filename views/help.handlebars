@@ -1,94 +1,110 @@
 <div id="helpanchor">
     <div class="cco_card_container help">
-            <div class="cco_backdrop_for_variable_heights help" onclick="openResource(event, 'learn')">
-                <div class="cco_single_card help" onclick="openResource(event, 'learn')">
-                    <h3>LEARN MORE</h3>
+        <div class="cco_backdrop_for_variable_heights help" onclick="openResource(event, 'learn')">
+            <div class="cco_single_card help" onclick="openResource(event, 'learn')">
+                <h3>LEARN MORE</h3>
 
-                </div>
             </div>
-            
-            <div class="cco_backdrop_for_variable_heights help" onclick="openResource(event, 'contact')">
-                <div class="cco_single_card help" onclick="openResource(event, 'contact')">
-                    <h3>CONTACT US</h3>
-                </div>
+        </div>
+
+        <div class="cco_backdrop_for_variable_heights help" onclick="openResource(event, 'contact')">
+            <div class="cco_single_card help" onclick="openResource(event, 'contact')">
+                <h3>CONTACT US</h3>
             </div>
-            
-            <div class="cco_backdrop_for_variable_heights help" onclick="openResource(event, 'about')">
-                <div class="cco_single_card help" onclick="openResource(event, 'about')">
-                    <h3>FAQ/ABOUT</h3>
-                </div>
+        </div>
+
+        <div class="cco_backdrop_for_variable_heights help" onclick="openResource(event, 'about')">
+            <div class="cco_single_card help" onclick="openResource(event, 'about')">
+                <h3>FAQ/ABOUT</h3>
             </div>
+        </div>
     </div>
 </div>
 
-<div style="display: none;" id = "learn">
+<div style="display: none;" id="learn">
     <div class="cco_card_container help">
         <div class="cco_backdrop_for_variable_heights help">
             <div class="cco_single_card help">
                 <span class="material-icons help" onclick="resetResources(event, 'learn')">arrow_back</span>
                 <h3>WHAT IS APHASIA?</h3>
-                <p>Aphasia is an impairment of language, affecting the production or comprehension of speech and the ability to read or write. Aphasia is always due to injury to the brain-most commonly from a stroke, particularly in older individuals. But brain injuries resulting in aphasia may also arise from head trauma, from brain tumors, or from infections.</p>
-                <p>Aphasia can be so severe as to make communication with the patient almost impossible, or it can be very mild. It may affect mainly a single aspect of language use, such as the ability to retrieve the names of objects, or the ability to put words together into sentences, or the ability to read. More commonly, however, multiple aspects of communication are impaired, while some channels remain accessible for a limited exchange of information.</p>
+                <p>Aphasia is an impairment of language, affecting the production or comprehension of speech and the
+                    ability to read or write. Aphasia is always due to injury to the brain-most commonly from a stroke,
+                    particularly in older individuals. But brain injuries resulting in aphasia may also arise from head
+                    trauma, from brain tumors, or from infections.</p>
+                <p>Aphasia can be so severe as to make communication with the patient almost impossible, or it can be
+                    very mild. It may affect mainly a single aspect of language use, such as the ability to retrieve the
+                    names of objects, or the ability to put words together into sentences, or the ability to read. More
+                    commonly, however, multiple aspects of communication are impaired, while some channels remain
+                    accessible for a limited exchange of information.</p>
             </div>
         </div>
-            
+
     </div>
 </div>
 
-<div style="display: none;" id = "contact">
-    <div class="cco_card_container help">
-        <div class="cco_backdrop_for_variable_heights help">
-            <div class="cco_single_card help">
-                <span class="material-icons help" onclick="resetResources(event, 'contact')">arrow_back</span>
-                <h3>CONTACT US</h3>
-                <p>Got questions? Shoot us an email!</p>
-                <div>
-                    <form method="post" action="">
-                        <input name="sender" placeholder="Name..."><br>
+{{#if form}}
+    <div style="display: none;" id="contact">
+        <div class="cco_card_container help">
+            <div class="cco_backdrop_for_variable_heights help">
+                <div class="cco_single_card help">
+                    <span class="material-icons help" onclick="resetResources(event, 'contact')">arrow_back</span>
+                    <h3>CONTACT US</h3>
+                    <p>Got questions? Shoot us an email!</p>
+                    <div>
+                        <form method="post" action="">
+                            <input name="sender" placeholder="Name..."><br>
 
-                        <input name="senderEmail" placeholder="Email..."><br>
+                            <input name="senderEmail" placeholder="Email..."><br>
 
-                        <textarea rows="5" cols="20" name="message" placeholder="What's on your mind?"></textarea><br>
+                            <textarea rows="5" cols="20" name="message"
+                                      placeholder="What's on your mind?"></textarea><br>
 
-                        <input type="submit" name="submit">
-                    </form>
+                            <input type="submit" name="submit" id="submit">
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-            
     </div>
-</div>
+{{else}}
+    <span>Thank you for your feedback!</span>
+{{/if}}
 
-<div style="display: none;" id = "about">
+<div style="display: none;" id="about">
     <div class="cco_card_container help">
         <div class="cco_backdrop_for_variable_heights help">
             <div class="cco_single_card help">
                 <span class="material-icons help" onclick="resetResources(event, 'about')">arrow_back</span>
                 <h3>ABOUT US</h3>
-                <p>We are a group of OSU CS students hoping to provide a useful app to sufferers of aphasia.People with aphasia tend to understand images better than text. They also may have mobility challenges caused by their brain injury. For example, it may be difficult to click on small buttons or use both hands at the same time. Our intent was to create an app with design elements to help address the challenges some users face when navigating software</p>
+                <p>We are a group of OSU CS students hoping to provide a useful app to sufferers of aphasia.People with
+                    aphasia tend to understand images better than text. They also may have mobility challenges caused by
+                    their brain injury. For example, it may be difficult to click on small buttons or use both hands at
+                    the same time. Our intent was to create an app with design elements to help address the challenges
+                    some users face when navigating software</p>
             </div>
         </div>
-            
+
     </div>
 </div>
 
 <script>
 
-var save;
-function openResource(evt, resource){
-    var card = document.getElementById("helpanchor");
-    save = card.removeChild(card.firstChild);
-    
-    var targetResource = document.getElementById(resource);
-    targetResource.style.display ="block";
+    var save;
 
-}
+    function openResource(evt, resource) {
+        var card = document.getElementById("helpanchor");
+        save = card.removeChild(card.firstChild);
+
+        var targetResource = document.getElementById(resource);
+        targetResource.style.display = "block";
+
+    }
 
 
-function resetResources(evt, resource){
-    document.getElementById(resource).style.display = "none";
-    document.getElementById("helpanchor").appendChild(save);
+    function resetResources(evt, resource) {
+        document.getElementById(resource).style.display = "none";
+        document.getElementById("helpanchor").appendChild(save);
 
-}
+    }
 
 </script>
