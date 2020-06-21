@@ -13,8 +13,8 @@ function category_cross_out_implementation(pool, app) {
     /* This POST request handles checking the answer of the category-cross-out game. */
     app.post('/category_cross_out', function (request, response, next) {
         let context = {};
-        context.score=response.body.score;
-        context.game=response.body.game;
+        context.score=request.body.score;
+        context.game=request.body.game;
         context.game++;
 
         if (request.body.answer === request.body.selection) {
