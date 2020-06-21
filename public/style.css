@@ -181,3 +181,7 @@ button.alphabet {
     padding: 10px;
     display: inline-block;
 }
+
+.cco_card_container.help{
+    display: flex; flex-direction: rows; justify-content: center; align-items: center;
+}
