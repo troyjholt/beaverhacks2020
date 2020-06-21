@@ -1,3 +1,15 @@
+{{#if bing}}
+    <audio autoplay>
+        <source src="sounds/correct.wav" type="audio/wav">
+    </audio>
+{{/if}}
+
+{{#if dun}}
+    <audio autoplay>
+        <source src="sounds/incorrect.wav" type="audio/wav">
+    </audio>
+{{/if}}
+
 <div class="cco_header_container">
 
     <div class="cco_title">
@@ -59,18 +71,6 @@
     <button type="submit" class="material_button" form="theForm" value="Submit">CHECK MY ANSWER</button>
 </div>
 </div>
-
-{{#if bing}}
-    <audio autoplay>
-        <source src="sounds/correct.wav" type="audio/wav">
-    </audio>
-{{/if}}
-
-{{#if dun}}
-    <audio autoplay>
-        <source src="sounds/incorrect.wav" type="audio/wav">
-    </audio>
-{{/if}}
 
 <script>
     document.addEventListener('DOMContentLoaded', cardClicks);
