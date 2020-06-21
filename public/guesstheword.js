@@ -11,7 +11,7 @@ var blanks;
 
 // Load images for various states of the apple
 for(i = 0; i <= lives; i++){
-    apples[i] = "/apples/Apple" + i + ".png";
+    apples[i] = "apples/Apple" + i + ".png";
 }
 
 document.addEventListener('DOMContentLoaded', pageLoad);
