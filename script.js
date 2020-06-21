@@ -58,7 +58,7 @@ category_cross_out(pool, app, rand)
 /* This GET request handles loading the shape-match page. */
 app.get('/shape_match', function (req, res, next) {
     let context = {};
-    res.render('shape_match', context);
+    res.render('construction', context);
 });
 
 
