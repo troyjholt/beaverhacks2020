@@ -73,6 +73,7 @@ uses the MIT license and can be found here: https://github.com/finnhvman/matter 
     outline: none;
     cursor: pointer;
     transition: box-shadow 0.2s;
+    margin: 20px;
 }
 
 .material_button::-moz-focus-inner {
