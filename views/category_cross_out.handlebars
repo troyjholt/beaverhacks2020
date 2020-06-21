@@ -4,7 +4,7 @@
         <span>Category-Cross-Out</span>
     </div>
 
-    <div class="cco_difficulty_settings">
+    <div id="cco_difficulty_selection">
         <div>
         <span id="difficulty_setting">Easy</span></div>
         <div><img src="word_hint_images/pictures_on.png" id="difficulty_easy" {{#if hide}}style="display: none"{{/if}}>
@@ -83,10 +83,13 @@
         let spacer2_3 = document.getElementById("spacer2_card_3");
         let spacer1_4 = document.getElementById("spacer1_card_4");
         let spacer2_4 = document.getElementById("spacer2_card_4");
+        let easy= document.getElementById("difficulty_easy");
+        let hard= document.getElementById("difficulty_hard");
+
 
         let selected= document.getElementById("selection");
-        let easy = document.getElementById("difficulty_easy");
-        let hard = document.getElementById("difficulty_hard");
+        let difficulty_button= document.getElementById("cco_difficulty_selection");
+        let isHard=0;
         let visibility= document.getElementById("hide_images");
 
 
@@ -131,14 +134,16 @@
             card.style.boxShadow = "0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05)";
         }
 
-        easy.addEventListener('click', event => {
+        difficulty_button.addEventListener('click', event => {
+
+            if(isHard===0) {
                 hidePictures();
+                isHard = 1;
+            }else{
+                showPictures();
+                isHard=0;
+            }
         })
-
-        hard.addEventListener('click', event => {
-            showPictures();
-        })
-
 
 
         function hidePictures(){
