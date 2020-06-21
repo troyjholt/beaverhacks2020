@@ -19,12 +19,12 @@
     background-color: #1A237E;
     box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
     font-family: "Nunito", sans-serif;
-    font-size: 22px;
+    font-size: 30px;
     font-weight: 600;
     overflow: hidden;
     outline: none;
-    margin-top: 20px;
-    margin-bottom: 20px;
+  padding: 20px;
+    margin: 20px;
 }
 
 #difficulty_easy{
