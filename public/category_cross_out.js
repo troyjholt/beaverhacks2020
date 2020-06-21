@@ -5,8 +5,8 @@ function category_cross_out_implementation(pool, app) {
     /* This GET request handles loading the category-cross-out game. */
     app.get('/category_cross_out', function (request, response, next) {
         let context = {};
-        context.score = score;
-        context.game = game;
+        context.score = 0;
+        context.game = 0;
 
         renderCCO(request, response, next, context);
 
