@@ -7,7 +7,7 @@
 {{#each tokens}}
     <div class="cco_backdrop_for_variable_heights">
     <div class="cco_single_card" id="{{this.id}}">
-        <img src="word_hint_images/{{this.url}}" class="cco_hint_image">
+        <img src="word_hint_images/{{this.url}}" class="cco_hint_image" id="{{this.name}}">
 
         <h3>{{this.name}}</h3>
 
@@ -20,9 +20,10 @@
 
 
 <form method="POST" id="theForm">
-    <input type="hidden" name="Solution" value="{{solution}}" id="solution">
+    <input type="hidden" name="Answer" value="{{solution}}" id="solution">
+    <input type="hidden" name="Selection" value="null" id="selected_card">
     <input type="hidden" name="Score" value="{{score}}" id="score">
-    <input type="hidden" name="Score" value="null" id="selected_card">
+
 </form>
 
 
@@ -76,8 +77,7 @@
         function highlight(card) {
             highlighted = card;
             card.style.boxShadow = "0px 0px 17px 3px rgba(0,163,250,1)";
-            selected.nodeValue = card.id;
-            selected.value = card.id;
+            selected.value = card[0].id;
         }
 
         function deHighlight(card) {
