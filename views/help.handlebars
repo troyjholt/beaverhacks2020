@@ -1,1 +1,83 @@
-The help page will go here.
+
+<div id="helpanchor">
+    <div class="cco_card_container help">
+            <div class="cco_backdrop_for_variable_heights help" onclick="openResource(event, 'learn')">
+                <div class="cco_single_card help" onclick="openResource(event, 'learn')">
+                    <h3>LEARN MORE</h3>
+
+                </div>
+            </div>
+            
+            <div class="cco_backdrop_for_variable_heights help" onclick="openResource(event, 'contact')">
+                <div class="cco_single_card help" onclick="openResource(event, 'contact')">
+                    <h3>CONTACT US</h3>
+                </div>
+            </div>
+            
+            <div class="cco_backdrop_for_variable_heights help" onclick="openResource(event, 'about')">
+                <div class="cco_single_card help" onclick="openResource(event, 'about')">
+                    <h3>FAQ/ABOUT</h3>
+                </div>
+            </div>
+    </div>
+</div>
+
+<div style="display: none;" id = "learn">
+    <div class="cco_card_container help">
+        <div class="cco_backdrop_for_variable_heights help">
+            <div class="cco_single_card help">
+                <span class="material-icons" onclick="resetResources(event, 'learn')">arrow_back</span>
+                <h3>TESTING</h3>
+
+            </div>
+        </div>
+            
+    </div>
+</div>
+
+<div style="display: none;" id = "contact">
+    <div class="cco_card_container help">
+        <div class="cco_backdrop_for_variable_heights help">
+            <div class="cco_single_card help">
+                <span class="material-icons" onclick="resetResources(event, 'contact')">arrow_back</span>
+                <h3>TESTING</h3>
+
+            </div>
+        </div>
+            
+    </div>
+</div>
+
+<div style="display: none;" id = "about">
+    <div class="cco_card_container help">
+        <div class="cco_backdrop_for_variable_heights help">
+            <div class="cco_single_card help">
+                <span class="material-icons" onclick="resetResources(event, 'about')">arrow_back</span>
+                <h3>TESTING</h3>
+
+            </div>
+        </div>
+            
+    </div>
+</div>
+
+<script>
+
+var save;
+function openResource(evt, resource){
+    var card = document.getElementById("helpanchor");
+    save = card.removeChild(card.firstChild);
+    
+    var targetResource = document.getElementById(resource);
+    targetResource.style.display ="block";
+
+}
+
+
+function resetResources(evt, resource){
+    document.getElementById(resource).style.display = "none";
+    document.getElementById("helpanchor").appendChild(save);
+
+}
+
+</script>
