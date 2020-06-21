@@ -94,10 +94,6 @@
     font-weight: 600;
 }
 
-/* Whitespace created when images are toggled off.*/
-.cco_hint_spacer {
-    display: none;
-}
 
 .cco_hint_image{
     display: flex;
