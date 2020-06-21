@@ -75,7 +75,8 @@
             highlighted = card;
             card.style.boxShadow = "0px 0px 17px 3px rgba(0,163,250,1)";
 
-            document.getElementById("selected_card").nodeValue=card.id;
+            let select = document.getElementById("selected_card");
+            select.textContent = "" + card.id;
         }
 
         function deHighlight(card) {
