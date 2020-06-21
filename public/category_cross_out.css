@@ -28,7 +28,7 @@
     margin: 20px;
 }
 
-.cco_difficulty_selection{
+#cco_difficulty_selection{
     display: flex;
     justify-content: center;
     align-items: center;
