@@ -97,6 +97,28 @@ div.menu_buttons > ul > li > a {
     font-weight: bold;
 }
 
+div.title > ul > li > a:hover {
+    background: #E3F2FD;
+    color: #1A237E;
+    font-weight: bold;
+}
+
+div.title > ul > li > a {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #BBDEFB;
+    font-weight: bold;
+}
+
+div.title > ul > li > a:hover {
+    background: #E3F2FD;
+    color: #1A237E;
+    font-weight: bold;
+}
+
 div.menu_buttons > ul > li > a:hover {
     background: #E3F2FD;
     color: #1A237E;
