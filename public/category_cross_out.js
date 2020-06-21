@@ -47,6 +47,17 @@ function category_cross_out_implementation(pool, app, rand) {
     });
 }
 
+
+/* This POST request handles checking the answer of the category-cross-out game. */
+app.post('/category_cross_out', function (request, response, next) {
+    let context = {};
+
+    console.log(request.body);
+
+    response.render('category_cross_out', context);
+};
+
+
 /*Modules is a special object which holds the exports dictionary.
 * Exports is a dictionary provided automatically by node.js that
 * has the keys which are the names of things in the module that

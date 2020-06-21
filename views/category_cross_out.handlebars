@@ -3,7 +3,7 @@
 
 
 <div class="cco_card_container">
-<form action="https://testy.requestcatcher.com/" method="POST">
+<form method="POST" id="theForm">
 {{#each tokens}}
     <div class="cco_backdrop_for_variable_heights">
     <div class="cco_single_card" id="{{this.id}}">
@@ -27,7 +27,7 @@
 </div>
 
 <div class="cco_button">
-    <button type="submit" class="material_button">CHECK MY ANSWER</button>
+    <button type="submit" class="material_button" form="theForm" value="Submit">CHECK MY ANSWER</button>
 </div>
 
 
