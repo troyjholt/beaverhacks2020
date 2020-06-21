@@ -51,6 +51,11 @@ img.cco_hint_image{
 /* material_button is adapted from the code by (c) Bence Szabó which
 uses the MIT license and can be found here: https://github.com/finnhvman/matter */
 
+.cco_button{
+    display: flex;
+    justify-content: right;
+
+}
 .material_button {
     position: relative;
     display: inline-block;
