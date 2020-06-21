@@ -65,11 +65,16 @@ app.get('/shape_match', function (req, res, next) {
 /* This GET request handles loading the guess-the-word page. */
 app.get('/guess_the_word', function (req, res, next) {
     let context = {};
-    context.form = 1;
 
     res.render('guess_the_word', context);
 });
 
+/* This GET request handles loading the help page. */
+app.get('/help', function (req, res, next) {
+    let context = {};
+    context.form = 1;
+    res.render('help', context);
+});
 
 /* This POST request handles checking the answer of the previous round and loading the next round.*/
 app.post('/help', function (request, response, next) {
@@ -96,12 +101,6 @@ app.post('/help', function (request, response, next) {
     });
 });
 
-
-/* This GET request handles loading the help page. */
-app.get('/help', function (req, res, next) {
-    let context = {};
-    res.render('help', context);
-});
 
 /* Create a 500 page. */
 app.use(function (err, req, res, next) {
