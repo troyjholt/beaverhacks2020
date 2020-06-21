@@ -1,6 +1,4 @@
 function category_cross_out_implementation(pool, app) {
-    let score = 0;
-    let game = 0;
 
     /* This GET request handles loading the category-cross-out game. */
     app.get('/category_cross_out', function (request, response, next) {
@@ -15,17 +13,16 @@ function category_cross_out_implementation(pool, app) {
     /* This POST request handles checking the answer of the category-cross-out game. */
     app.post('/category_cross_out', function (request, response, next) {
         let context = {};
-        game++;
+        context.score=response.body.score;
+        context.game=response.body.game;
+        context.game++;
 
         if (request.body.answer === request.body.selection) {
-            score++;
+            context.score++;
             context.result = "correct";
         } else {
             context.result = "wrong";
         }
-
-        context.score = score;
-        context.game = game;
 
         renderCCO(request, response, next, context);
     });
