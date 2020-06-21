@@ -1,6 +1,6 @@
 <span>The two categories are: {{category_correct}} and {{category_wrong}}.</span>
 <p><br></p>
-
+<span>The solution is: {{solution}}.</span>
 
 <div class="cco_card_container">
 
@@ -18,18 +18,8 @@
 </div>
 
 <form method="POST" id="theForm">
-
-{{#each tokens}}
-    <input type="hidden" name="card_id" value="{{this.id}}">
-    <input type="hidden" id="select_{{this.id}}" name="selection_status" value="null">
-
-    {{#if this.matched}}
-        <input type="hidden" name="correct" value="Incorrect">
-    {{else}}
-        <input type="hidden" name="correct" value="Correct">
-    {{/if}}
-
-{{/each}}
+    <input type="hidden" name="Solution" value="{{solution}}">
+    <input type="hidden" name="Selected" value="null" id="selected_card">
 </form>
 
 
@@ -47,6 +37,8 @@
         let card_2 = document.getElementById("card_2");
         let card_3 = document.getElementById("card_3");
         let card_4 = document.getElementById("card_4");
+
+
         let highlighted = null;
 
         card_1.addEventListener('click', event => {
@@ -81,14 +73,12 @@
         function highlight(card) {
             highlighted = card;
             card.style.boxShadow = "0px 0px 17px 3px rgba(0,163,250,1)";
-            let selected=document.getElementById("select_"+card);
-            selected.nodeValue="Selected";
+
+            document.getElementById("selected_card").nodeValue=card.id;
         }
 
         function deHighlight(card) {
             card.style.boxShadow = "0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05)";
-            let notSelected=document.getElementById("select_"+card);
-            notSelected.nodeValue="null";
         }
     }
 
