@@ -9,7 +9,7 @@
 
         <div class="cco_backdrop_for_variable_heights help" onclick="openResource(event, 'contact')">
             <div class="cco_single_card help" onclick="openResource(event, 'contact')">
-                <h3>CONTACT US</h3>
+                {{#if form}}<h3>CONTACT US</h3>{{else}} <h3>Thanks for the feedback!</h3>{{/if}}
             </div>
         </div>
 
@@ -60,7 +60,7 @@
                                   placeholder="What's on your mind?"></textarea><br>
                         <input type="submit" name="submit" id="submit">
                     </form>
-                {{else}} <span>Please allow 24hrs for us to get back to you!</span>{{/if}}
+                {{else}} <span>We try to answer all messages within 365 days.</span>{{/if}}
             </div>
             </div>
         </div>
@@ -85,21 +85,6 @@
     </div>
 </div>
 
-{{#if form}}
-
-{{else}}
-    <div style="display: none;">
-        <div class="cco_card_container help">
-            <div class="cco_backdrop_for_variable_heights help">
-                <div class="cco_single_card help">
-                    <span class="material-icons help" onclick="resetResources(event, 'about')">arrow_back</span>
-                    <h3>Thanks for the feedback!</h3>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    {{/if}}
 
 <script>
 
