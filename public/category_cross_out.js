@@ -38,7 +38,7 @@ function category_cross_out_implementation(pool, app, rand) {
                             context.tokens[i].matched=1;
                         }
 
-                        context.tokens[i].id="card_"+i;
+                        context.tokens[i].id="card_"+(i+1);
                     }
 
 
