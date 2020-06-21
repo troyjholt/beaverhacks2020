@@ -27,6 +27,33 @@
     margin: 20px;
 }
 
+.cco_difficulty_settings{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border: solid;
+    border: #cccccc;
+    border-radius: 2px;
+    min-width: 20%;
+    height: 80px;
+    vertical-align: middle;
+    text-align: center;
+    text-overflow: ellipsis;
+    color: #000000;
+    background-color: #f1f1f1;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
+    font-family: "Nunito", sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+    overflow: hidden;
+    outline: none;
+    padding: 10px;
+    margin: 20px;
+
+
+}
+
+
 /* This CSS controls the button the turns the images on and off.*/
 #difficulty_easy{
     display: inline;
