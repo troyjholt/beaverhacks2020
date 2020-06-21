@@ -55,6 +55,9 @@ img.cco_hint_image{
 }
 
 .cco_score_tracker{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 50%;
     text-align: center;
     margin: 20px;
@@ -64,7 +67,7 @@ img.cco_hint_image{
 
 .cco_score_tracker span {
     font-family: "Nunito", sans-serif;
-    font-size: 20px;
+    font-size: 30px;
     font-weight: 600;
     margin: 20px;
 }
