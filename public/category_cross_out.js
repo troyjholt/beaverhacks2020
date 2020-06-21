@@ -87,6 +87,7 @@ function category_cross_out_implementation(pool, app) {
                         context.tokens[i].id = "card_" + (i + 1);
                     }
 
+                    console.log(context);
                     response.render('category_cross_out', context);
                 });
             });
