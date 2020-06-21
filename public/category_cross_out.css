@@ -64,6 +64,12 @@
     margin: 20px;
     text-align: center;
 }
+.cco_single_card div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+}
 
 /* Resizes the card upon hover.*/
 .cco_single_card:hover{
