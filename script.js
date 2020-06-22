@@ -65,7 +65,7 @@ app.get('/guess_the_word', function (req, res, next) {
 /* This GET request handles loading the shape-match page. */
 app.get('/shape_match', function (req, res, next) {
     let context = {};
-    res.render('construction', context);
+    res.render('qwirkle', context);
 });
 
 
