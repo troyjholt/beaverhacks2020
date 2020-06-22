@@ -253,7 +253,6 @@ for(var i = 0; i < 12; i++)
         
         var myImage = new Image(50,50);
         
-        
         block.id = i + " " + j
         //console.log(block.id);
         block.style.display = "inline-block";
@@ -285,6 +284,7 @@ rowContainer.style.display = "flex";
 rowContainer.style.flex = "row";
 rowContainer.style.paddings = "0px";
 rowContainer.style.margins = "0px";
+rowContainer.style.marginBottom = "10px";
 rowContainer.style.marginTop = "15px";
 rowContainer.style.justifyContent = "center";
 rowContainer.style.overflow = "hidden";
